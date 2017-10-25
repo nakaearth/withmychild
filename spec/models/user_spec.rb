@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -6,9 +7,7 @@ RSpec.describe User, type: :model do
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
-      it { expect have_many(:photos) }
-      it { expect have_many(:group_members) }
-      it { expect have_many(:my_groups) }
+      # it { expect have_many(:photos) }
     end
   end
 
@@ -23,7 +22,7 @@ RSpec.describe User, type: :model do
     end
 
     context 'emailカラム' do
-      it { is_expected.to validate_length_of(:email).is_at_most(60) }
+      it { is_expected.to validate_length_of(:email).is_at_most(80) }
     end
 
     context 'providerカラム' do

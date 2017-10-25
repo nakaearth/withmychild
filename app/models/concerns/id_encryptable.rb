@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IdEncryptable
   extend ActiveSupport::Concern
 
@@ -39,6 +41,11 @@ module IdEncryptable
     else
       super
     end
+  end
+
+  def respond_to_missing?(method_name, include_private = false)
+    method_name.to_s.start_with?('encrypted') || super
+    method_name.to_s.start_with?('decrypted') || super
   end
 
   # インスタンスメソッド

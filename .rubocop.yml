@@ -22,7 +22,7 @@ Metrics/BlockNesting:
   Enabled: false
 Metrics/BlockLength:
   Exclude:
-    - 'app/models/concerns/*'
+    - 'spec/**/*'
 Metrics/ClassLength:
   Enabled: false
 Metrics/ModuleLength:
@@ -51,13 +51,13 @@ Style/StringLiterals:
   Enabled: false
 Style/Documentation:
   Enabled: false
-Style/SpaceBeforeFirstArg:
+Layout/SpaceBeforeFirstArg:
   Enabled: false
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
-Style/PredicateName:
+Naming/PredicateName:
   Enabled: false
 Style/WordArray:
   Enabled: false
@@ -65,12 +65,12 @@ Style/AndOr:
   Enabled: false
 Style/BlockComments:
   Enabled: false
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: false
 # https://github.com/bbatsov/ruby-style-guide#no-bang-bang
 Style/DoubleNegation:
   Enabled: false
-Style/AlignParameters:
+Lauout/AlignParameters:
   Enabled: false
 GuardClause:
   MinBodyLength: 4
