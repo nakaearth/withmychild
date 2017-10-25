@@ -1,0 +1,15 @@
+create_table "users", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
+  t.string   "name",               limit: 255
+  t.string   "email",              limit: 255,             null: false
+  t.string   "decrypted_password", limit: 255
+  t.string   "provider",           limit: 255,             null: false
+  t.string   "nickname",           limit: 255
+  t.string   "uid",                limit: 255
+  t.string   "image_url",          limit: 255
+  t.string   "access_token",       limit: 255
+  t.string   "secret_token",       limit: 255
+  t.datetime "created_at"
+  t.datetime "updated_at"
+end
+
+add_index "users", ["provider", "email"], name: "index_users_on_provider_and_email", using: :btree
