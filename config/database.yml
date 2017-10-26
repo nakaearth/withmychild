@@ -14,19 +14,9 @@ development:
   database: famipark_development
   host: localhost
 
-photo_development:
-  <<: *default
-  database: famipark_photo_development
-  host: localhost
-
 test:
   <<: *default
   database: famipark_test
-  host: localhost
-
-photo_test:
-  <<: *default
-  database: famipark_photo_test
   host: localhost
 
 production:
@@ -36,63 +26,3 @@ production:
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_SERVERNAME'] %>
 
-famiphoto_production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
-
-famipark_master_development:
-  <<: *default
-  database: famipark_development
-  host: localhost
-
-famipark_slave_development:
-  <<: *default
-  database: famipark_development
-  host: localhost
-
-famipark_master_test:
-  <<: *default
-  database: famipark_test
-  host: localhost
-
-famipark_slave_test:
-  <<: *default
-  database: famipark_test
-  host: localhost
-
-famipark_photo_master_development:
-  <<: *default
-  database: famipark_photo_development
-  host: localhost
-
-famipark_photo_slave_development:
-  <<: *default
-  database: famipark_photo_development
-  host: localhost
-
-famipark_photo_master_test:
-  <<: *default
-  database: famipark_photo_test
-  host: localhost
-
-famipark_photo_slave_test:
-  <<: *default
-  database: famipark_photo_test
-  host: localhost
-
-famipark_master_production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
-
-famipark_slave_production:
-  <<: *default
-  database: <%= ENV['DB_DATABASE'] %>
-  username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DB_SERVERNAME'] %>
