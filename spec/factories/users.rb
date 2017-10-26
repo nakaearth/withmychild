@@ -9,6 +9,5 @@ FactoryGirl.define do
     nickname 'ほげking'
     uid Base64.encode64('aabbccdd123')
     access_token "12345aabc"
-    secret_token "09876zxy"
   end
 end
