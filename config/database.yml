@@ -7,7 +7,6 @@ default: &default
   password:
   strict: false
   pool: 5
-  socket: <%= ENV['DAPHY_MYSQL_SOCKET'] || '/tmp/mysql.sock' %>
 
 development:
   <<: *default
