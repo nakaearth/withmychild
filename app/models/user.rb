@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   class << self
     def create_account(auth)
-      Users::Registration.new.call(auth)
+      Users::FacebookRegistration.new.call(auth)
     end
   end
 end
