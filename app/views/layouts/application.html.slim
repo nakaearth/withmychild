@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    title
+      | Famipark
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"]
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    link[href="http://fonts.googleapis.com/css?family=Cabin:700" rel="stylesheet" type="text/css"]
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.navbar.navbar-default.navbar-fixed-top.noBorder[role="navigation"]
+      .container
+        .navbar-header
+          button.navbar-toggle[type="button" data-toggle="collapse" data-target="#myNavbar"]
+            span.sr-only
+              | Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand.brandStyle[href="#"]
+            | Creative Company
+        #myNavbar.collapse.navbar-collapse.noPadding
+          .navbar-right.menustyle
+            ul.nav.navbar-nav
+              li
+                a[href="#"]
+                p
+                  | home
+              li
+                a[href="#"]
+                p
+                  | services
+              li
+                a[href="#"]
+                p
+                  | contact us
+    .container-fluid.noPadding
+      .container-fluid.headpicture
+      .container.text-center
+        = yield
+        h1
+          | Bootstrap Responsive Template
+        p.textStyle
+          |  Hey there! This is a
+          a[href="http://tutorialzine.com/2014/04/creative-company-bootstrap-template/"]
+            | responsive template made by Tutorialzine
+          | . It uses the bootstrap framework from twitter. Try resizing your browser window, or open the page on your smartphone. We hope you find our little template useful! 
+          br
+          br
+          | Feel free to share it with your friends, or, if possible, include a back link to our site if you use it. Thanks! 
+        h1
+          | Latest Projects
+      .container.textstyle
+        .row.text-center.latestProjects
+          .col-md-4.col-sm-6
+            a[href="http://dribbble.com/shots/1210363-Weather-App-Washing-Machine-iOS7"]
+              img.imgsize[src="assets/images/1.jpg" alt="weather app"]
+            p
+              | Weather app design 
+              a[href="http://dribbble.com/shots/1210363-Weather-App-Washing-Machine-iOS7"]
+                | learn more →
+          .col-md-4.col-sm-6
+            a[href="http://dribbble.com/shots/202313-British-Tea-Cup"]
+              img.imgsize[src="assets/images/2.jpg" alt="british tea cup"]
+            p
+              | 3D modeling and rendering 
+              a[href="http://dribbble.com/shots/202313-British-Tea-Cup"]
+                | learn more →
+          .col-md-4.col-sm-12
+            a[href="http://dribbble.com/shots/606745-In-app-Visual-Data"]
+              img.imgsize[src="assets/images/3.jpg" alt="app visualization data"]
+            p
+              | Mobile web application 
+              a[href="http://dribbble.com/shots/606745-In-app-Visual-Data"]
+                | learn more →
+      .container.footer
+        .col-xs-12.col-md-8.noPadding
+          p#footerLogoText
+            | Creative Company © 2014
+        .col-xs-12.col-md-4.noPadding
+          .socialButtons.responsiveAlign
+            a.noPadding[href="#"]
+              img[src="assets/images/twitter.svg" alt="image1"]
+            a.noPadding[href="#"]
+              img[src="assets/images/facebook.svg" alt="image1"]
+            a.noPadding[href="#"]
+              img[src="assets/images/behance.svg" alt="image1"]
+    script[src="http://code.jquery.com/jquery-1.11.0.min.js"]
+    script[src="assets/js/bootstrap.min.js"]
+    script[src="assets/js/myscript.js"]
