@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   attr_encrypted :uid
 
+  has_many :photos
+  # has_many :videos
+
   validates :name, presence: true, length: { maximum: 60 }
   validates :uid, presence: true
   validates :email, length: { maximum: 80 }
@@ -13,7 +16,14 @@ class User < ApplicationRecord
 
   class << self
     def create_account(auth)
-      Users::FacebookRegistration.new.call(auth)
+      case auth[:provider]
+      when 'facebook'
+        Users::FacebookRegistration.new.call(auth)
+      when 'twitter'
+        Users::TwitterRegistration.new.call(auth)
+      else
+        Users::TwitterRegistration.new.call(auth)
+      end
     end
   end
 end

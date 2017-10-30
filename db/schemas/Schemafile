@@ -1,1 +1,2 @@
+require 'photos.schema'
 require 'users.schema'

@@ -96,6 +96,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 認証
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 # バッチ処理
 gem 'whenever',  :require => false
 
@@ -103,4 +104,17 @@ gem 'whenever',  :require => false
 gem "slim-rails"
 # TODOのやつだったかな？
 gem "watson-ruby"
+# 画像アップロード
+gem 'carrierwave'
+gem 'mini_magick'
+# 画像ライブラリ
+gem 'rmagick'
+# 位置情報
+gem 'geocoder'
+# decorator
+gem "active_decorator"
+# pagenate
+gem 'kaminari'
+# 暗号化
+gem 'attr_encrypted'
 

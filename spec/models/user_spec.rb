@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
-      # it { expect have_many(:photos) }
+      it { expect have_many(:photos) }
     end
   end
 
@@ -29,5 +29,9 @@ RSpec.describe User, type: :model do
       it { is_expected.to validate_presence_of(:provider) }
       it { is_expected.to validate_length_of(:provider).is_at_most(30) }
     end
+  end
+
+  describe '.create_account' do
+
   end
 end
