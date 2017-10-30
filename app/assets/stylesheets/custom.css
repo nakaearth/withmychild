@@ -62,7 +62,7 @@ a{
 ------------------------------------*/
 
 .headpicture{
-	background:url(../images/header.jpg);
+	background:url(header.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
 	width: 100%;
