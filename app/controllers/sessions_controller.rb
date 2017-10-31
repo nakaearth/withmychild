@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  skip_before_action :login?, only: [:new, :create, :destroy, :oauth_failure]
+  skip_before_action :login?, only: %i[new create destroy oauth_failure]
 
   def new
     redirect_to '/auth/' + (Rails.env.production? ? params[:provider] : 'developer')

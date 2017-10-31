@@ -32,6 +32,5 @@ RSpec.describe User, type: :model do
   end
 
   describe '.create_account' do
-
   end
 end
