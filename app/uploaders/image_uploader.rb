@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include carrierwave.minimagick
-  include cloudinary.carrierwave if rails.env.production?
+  include CarrierWave::MiniMagick
+  include cloudinary::carrierwave if Rails.env.production?
 
   # Choose what kind of storage to use for this uploader:
   storage :file unless Rails.env.production?
