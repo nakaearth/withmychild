@@ -18,11 +18,11 @@ class User < ApplicationRecord
     def create_account(auth)
       case auth[:provider]
       when 'facebook'
-        Users::FacebookRegistration.new.call(auth)
+        Users::FacebookRegistration.call(auth)
       when 'twitter'
-        Users::TwitterRegistration.new.call(auth)
+        Users::TwitterRegistration.call(auth)
       else
-        Users::TwitterRegistration.new.call(auth)
+        Users::TwitterRegistration.call(auth)
       end
     end
   end
