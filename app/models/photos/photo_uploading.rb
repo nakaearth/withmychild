@@ -14,7 +14,7 @@ module Photos
 
     def execute
       ActiveRecord::Base.transaction do
-        Photo.with_writable { @photo.save! }
+        @photo.save!
       end
     end
   end

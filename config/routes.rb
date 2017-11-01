@@ -9,4 +9,11 @@ Rails.application.routes.draw do
   post "/auth/:provider/callback" => "sessions#create" if Rails.env.development?
   get "/auth/failure" => "sessions#failuer"
 
+  # web
+  resources :photos
+
+  # api
+  namespace :api do
+    resources :photos, only: %i( index show create update destroy )
+  end
 end
