@@ -6,8 +6,8 @@ RSpec.describe User, type: :model do
   let!(:user) { create(:user) }
 
   describe '幾つかのテーブルと関連を持っている' do
-    context 'have a relation tro user class' do
-      it { expect have_many(:photos) }
+    context 'have a relation to place class' do
+      it { expect have_many(:places) }
     end
   end
 

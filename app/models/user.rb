@@ -6,8 +6,7 @@ class User < ApplicationRecord
 
   attr_encrypted :uid
 
-  has_many :photos
-  # has_many :videos
+  has_many :places
 
   validates :name, presence: true, length: { maximum: 60 }
   validates :uid, presence: true

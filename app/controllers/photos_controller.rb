@@ -4,13 +4,12 @@ class PhotosController < ApplicationController
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_album, only: %i(index destroy)
+  before_action :set_place, only: %i(index destroy)
   before_action :set_photo, only: %i(edit show destroy)
-  before_action :set_shared_album, only: %i(index)
 
   def index
     respond_to do |format|
-      @photos = @album.photos.page(params[:page])
+      @photos = @place.photos.page(params[:page])
       format.html
 
       format.json { render 'api/photos/index' }
@@ -21,25 +20,18 @@ class PhotosController < ApplicationController
     render partial: 'show', format: :html
   end
 
-  def close
-    @photos = @current_user.photos.page(params[:page])
-
-    render partial: 'close', format: :html
-  end
-
   def new
     @photo = @current_user.photos.build
-
-    @albums = @current_user.albums
+    @places = @current_user.places
   end
 
   def create
-    @photo = @current_user.photos.build(photo_params)
+    @photo = @place.photos.build(photo_params)
 
-    if Photo.with_writable { @photo.save }
-      redirect_to album_photos_path(album_id: Album.encrypt_id(@photo.album.id.to_s)), notice: '写真の登録がしました'
+    if @photo.save
+      redirect_to place_photos_path(place_id: Place.encrypt_id(@photo.place.id.to_s)), notice: '写真の登録がしました'
     else
-      @albums = @current_user.albums
+      @places = @current_user.places
 
       render action: :new, alert: '写真の登録に失敗しました'
     end
@@ -53,7 +45,7 @@ class PhotosController < ApplicationController
     target_date_ymd = @photo.created_at_ymd
     @photo.destroy
 
-    redirect_to album_daily_photos_path(album_id: Album.encrypt_id(@album.id.to_s), created_at_ymd: target_date_ymd), notice: '写真を削除しました'
+    redirect_to place_photos_path(album_id: Album.encrypt_id(@album.id.to_s), created_at_ymd: target_date_ymd), notice: '写真を削除しました'
   end
 
   private
@@ -63,21 +55,17 @@ class PhotosController < ApplicationController
     request.variant = :phone if mobile?
   end
 
-  def set_album
-    @album = @current_user.albums.where(id: Album.decrypt_id(params[:album_id])).first
+  def set_place
+    @place = Places.find(Place.decrypt_id(params[:place_id]))
   end
 
   def set_photo
     @photo = Photo.find(params[:id])
   end
 
-  def set_shared_album
-    @shared_album = SharedAlbum.new(album: @album)
-  end
-
   def photo_params
     colums_name = [
-      :album_id,
+      :place_id,
       :description,
       :image,
       photo_geo_attributes: [

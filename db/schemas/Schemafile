@@ -1,3 +1,4 @@
 require 'photos.schema'
 require 'tags.schema'
+require 'places.schema'
 require 'users.schema'

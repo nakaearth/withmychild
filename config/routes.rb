@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   # web
-  resources :photos
+  resources :places do
+    resources :photos
+  end
 
   # api
   namespace :api do
-    resources :photos, only: %i( index show create update destroy )
+    resources :places do
+      resources :photos
+  end
   end
 end

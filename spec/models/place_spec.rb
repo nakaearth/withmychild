@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Photo, type: :model do
+RSpec.describe Place, type: :model do
   let!(:user) { create(:user) }
   let!(:photo) { create(:photo, user: user) }
 
@@ -32,22 +32,22 @@ RSpec.describe Photo, type: :model do
       it { expect(@test_photo.save).to eq true }
     end
 
-    # context 'user経由でtagを作成する' do
-    #   before do
-    #     @build_photo = user.photos.build({
-    #                      description: 'テストほげ',
-    #                      image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
-    #                      tags_attributes: [{ name: 'test' }]
-    #                   })
-    #   end
-    #
-    #   # it { expect(@build_photo.save).to eq true }
-    #   it 'tagsテーブルにデータが登録される' do
-    #     @build_photo.save
-    #     # expect(Tag.where(name: 'test').first).not_to be_nil
-    #   end
-    # end
-    #
+    context 'user経由でtagを作成する' do
+      before do
+        @build_photo = user.photos.build({
+                         description: 'テストほげ',
+                         image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg"),
+                         tags_attributes: [{ name: 'test' }]
+                      })
+      end
+
+      # it { expect(@build_photo.save).to eq true }
+      it 'tagsテーブルにデータが登録される' do
+        @build_photo.save
+        # expect(Tag.where(name: 'test').first).not_to be_nil
+      end
+    end
+
     # context 'user経由でphoto_geoを作成する' do
     #   before do
     #     @built_photo = user.photos.build({
