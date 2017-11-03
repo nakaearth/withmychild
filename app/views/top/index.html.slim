@@ -1,3 +1,4 @@
-.login_form
-  = link_to 'facebookでログイン', "/facebook/login"
+= unless @current_user
+  .login_form
+    = link_to 'facebookでログイン', "/facebook/login"
 

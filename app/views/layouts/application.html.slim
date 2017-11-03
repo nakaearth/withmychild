@@ -12,30 +12,7 @@ html
   body
     nav.navbar.navbar-default.navbar-fixed-top.noBorder[role="navigation"]
       .container
-        .navbar-header
-          button.navbar-toggle[type="button" data-toggle="collapse" data-target="#myNavbar"]
-            span.sr-only
-              | Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand.brandStyle[href="#"]
-            | Famipark
-        #myNavbar.collapse.navbar-collapse.noPadding
-          .navbar-right.menustyle
-            ul.nav.navbar-nav
-              li
-                a[href="#"]
-                p
-                  | home
-              li
-                a[href="#"]
-                p
-                  | services
-              li
-                a[href="#"]
-                p
-                  | contact us
+        = render 'shared/header'
     .container-fluid.noPadding
       .container-fluid.headpicture
       .container.text-center
