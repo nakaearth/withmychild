@@ -5,7 +5,6 @@ class Photo < ApplicationRecord
 
   alias_attribute :start_time, :created_at
 
-  belongs_to :user
   belongs_to :place
 
   def thumb_url

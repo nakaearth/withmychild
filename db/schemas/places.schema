@@ -4,7 +4,7 @@ create_table "places", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8
   t.string   "address",     limit: 80
   t.string   "tel",         limit: 11
   t.integer  "user_id",     limit: 4,  default: 0, null: false
-  t.integer  "likes",       limit: 4,  default: 0, null: true
+  t.integer  "likes",       limit: 4,  default: 0, null: false
   t.datetime "created_at"
   t.datetime "updated_at"
 end

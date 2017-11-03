@@ -3,27 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
-  let!(:user) { create(:user) }
-  let!(:photo) { create(:photo, user: user) }
+  let(:user) { create(:user) }
+  let(:park) { create(:place, :park, user: user) }
+  let(:park_photo) { create(:photo, place: park) }
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
-      it { expect belong_to(:user) }
-    end
-  end
-
-  describe '入力チェックをする' do
-    context 'descriptionカラム' do
-      it { is_expected.to validate_length_of(:description).is_at_most(140) }
+      it { expect belong_to(:place) }
     end
   end
 
   describe 'photoの登録' do
-    context 'user経由でphotoを作成する' do
+    context 'place経由でphotoを作成する' do
       before do
-        @test_photo = user.photos.build(
+        park
+        @test_photo = park.photos.build(
           {
-            description: 'テストほげ',
             image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg")
           }
         )

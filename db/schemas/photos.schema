@@ -1,10 +1,8 @@
 create_table "photos", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
-  t.string   "image",        limit: 255
-  t.string   "description",  limit: 140
-  t.integer  "user_id",      limit: 4,     default: 0, null: false
-  t.integer  "good_point",  limit: 4,     default: 0, null: true
+  t.string   "image",       limit: 255
+  t.integer  "place_id",    limit: 4, default: 0, null: false
   t.datetime "created_at"
   t.datetime "updated_at"
 end
 
-add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
+add_index "photos", ["place_id"], name: "index_photos_on_place_id", using: :btree

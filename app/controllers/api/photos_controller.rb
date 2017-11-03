@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 module Api
   class PhotosController < Api::ApplicationController
     include EncryptionConcern
 
     before_action :set_user
     before_action :user_exist?
-    before_action :set_photo, only: %i(update show)
+    before_action :set_photo, only: %i[update show]
 
     # 写真一覧をjson形式で返す
     def index
@@ -25,7 +26,7 @@ module Api
 
         render json: { status: :ok }
       end
-    rescue => e
+    rescue ActiveRecord::RecordInvalid => e
       logger.error e.message
 
       render json: { status: :error, error_msg: e.message }

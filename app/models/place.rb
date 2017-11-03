@@ -8,6 +8,8 @@ class Place < ApplicationRecord
   has_many :tags, inverse_of: :place
 
   accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :tags
 
   validates :description, length: { maximum: 1000 }
+  validates :address, length: { maximum: 80 }
 end

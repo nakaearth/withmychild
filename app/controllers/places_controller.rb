@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class PlacesController < ApplicationController
   include UserAgent
   include DecryptedId
 
   before_action :set_request_variant
-  before_action :set_place, only: %i(edit, show, destroy)
+  before_action :set_place, only: %i[edit show destroy]
 
   def index
     respond_to do |format|
@@ -19,9 +21,7 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @photo = @current_user.photos.build
-
-    @places = @current_user.places
+    @place = @current_user.places.build
   end
 
   def create
@@ -30,8 +30,10 @@ class PlacesController < ApplicationController
     begin
       @place.save!
       redirect_to place_photos_path(place_id: Place.encrypt_id(@place.id.to_s)), notice: '登録しました'
-    rescue
+    rescue ActiveRecord::RecordInvalid => e
       @albums = @current_user.places
+      # TODO: ここエラーログはログ出力させたいっすね
+      logger.error(error_message: e.message)
 
       render action: :new, alert: '写真の登録に失敗しました'
     end
@@ -59,13 +61,12 @@ class PlacesController < ApplicationController
     @place = @current_user.places.find(Place.decrypt_id(params[:id]))
   end
 
-
   def place_params
     colums_name = [
       :description,
       photo_attributes: [
         :image
-      ]
+      ],
       tags_attributes: [
         :name
       ]
