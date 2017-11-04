@@ -1,0 +1,24 @@
+.user_list_context
+  table
+    tr
+      td.group_user_list
+        .user_list
+          - if @users
+            - @users.each do |user|
+              .user_div
+                .user_detail id="user_viewer_#{user.id}"
+                  #{image_tag user.image_url}
+                  |
+                  = user.name
+      td.search_user_list
+        .user_list 
+          - if @result_users
+            - @result_users.each do |user|
+              .user_div
+                .user_detail id="user_viewer_#{user.id}"
+                  #{image_tag user.image_url}
+                  |
+                  = user.name
+                  = link_to_remote_modal 'グループ招待', new_user_path
+
+
