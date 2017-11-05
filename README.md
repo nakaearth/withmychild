@@ -14,7 +14,7 @@ cd famipark
 docker-compose build
 docker-compose up
 docker-compose run app bundle exec rake db:setup
-docker-compose run app bundle exec ridgepole -c config/database.yml -f db/schemas/Schemafile --apply
+docker-compose run app bundle exec rake ridgepole:apply
 ```
 
 以下のコマンドでアプリケーションにアクセス
