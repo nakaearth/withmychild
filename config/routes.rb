@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :places do
     resources :photos
   end
+  resources :users
 
   # api
   namespace :api do

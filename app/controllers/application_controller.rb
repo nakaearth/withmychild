@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :login?
-  before_action :current_user
   before_action :application_log_output
+  helper_method :current_user
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
   rescue_from ActionController::RoutingError, with: :render_404
@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(Base64.decode64(session[:encrypted_user_id])) if session[:encrypted_user_id]
   rescue ActiveRecord::RecordNotFound => ar
     logger.info "ユーザ情報がありません: #{ar.message}"
-    session[:user_id] = nil
-    nil
   end
 
   def login?
