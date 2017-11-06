@@ -11,12 +11,12 @@ default: &default
 development:
   <<: *default
   database: famipark_development
-  host: localhost
+  host: <%= ENV['DB_SERVERNAME'] %>
 
 test:
   <<: *default
   database: famipark_test
-  host: localhost
+  host: <%= ENV['DB_SERVERNAME'] %>
 
 production:
   <<: *default

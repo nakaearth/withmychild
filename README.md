@@ -1,24 +1,38 @@
-# README
+# Famipark
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirement
 
-Things you may want to cover:
+[Docker for Mac](https://docs.docker.com/docker-for-mac/)
 
-* Ruby version
+## Development
 
-* System dependencies
+open a terminal app:
 
-* Configuration
+```
+git clone <this repository uri> famipark
+cd famipark
+docker-compose build
+docker-compose up
+docker-compose run app bundle exec rake db:setup
+docker-compose run app bundle exec rake ridgepole:apply
+```
 
-* Database creation
+以下のコマンドでアプリケーションにアクセス
 
-* Database initialization
+```
+open "http://localhost:3000"
+```
 
-* How to run the test suite
+## Debug
 
-* Services (job queues, cache servers, search engines, etc.)
+open a terminal app:
 
-* Deployment instructions
+```
+docker attach famipark_app_1
+```
 
-* ...
+コンソールがattachされるので、pryを仕込んで確認する
+
+*pry自体は`quit`コマンドで終了できる。そのあと、 **`Ctrl + C`などでdockerの接続を終了すると、コンテナ自体が終了してしまう。** デタッチするときは`Ctrl-P Ctrl-Q`で抜ける。*
+
+Enjoy!

@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  db:
+    image: mysql
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+  app:
+    build: .
+    environment:
+      DB_SERVERNAME: "db"
+    volumes:
+      - .:/famipark
+    working_dir: "/famipark"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server"
+    links:
+      - db
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+volumes:
+  data:
+    driver: local
