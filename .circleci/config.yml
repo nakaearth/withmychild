@@ -1,4 +1,4 @@
-ersion: 2
+version: 2
 jobs:
   build:
     parallelism: 3
@@ -6,11 +6,13 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.1-node
         environment:
-          RAILS_ENV: test
-      - image: circleci/mysql
+          RAILS_ENV: 'test'
+          RACK_ENV: 'test'
+      - image: circleci/mysql:5.7.17
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-          MYSQL_ROOT_HOST: '%'
+           - MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+           - MYSQL_ROOT_HOST: '%'
+           - MYSQL_ROOT_PASSWORD: ''
     steps:
       - checkout
       # Restore bundle cache
@@ -30,8 +32,6 @@ jobs:
       # Run rspec in parallel
       - run: |
           bundle exec rspec --profile 10 \
-                            --format RspecJunitFormatter \
-                            --out test_results/rspec.xml \
                             --format progress \
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: bundle exec rubocop app
