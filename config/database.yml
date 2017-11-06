@@ -16,7 +16,8 @@ development:
 test:
   <<: *default
   database: famipark_test
-  host: <%= ENV['DB_SERVERNAME'] %>
+  host: 127.0.0.1
+  port: 3306
 
 production:
   <<: *default
