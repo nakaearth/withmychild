@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :places do
       resources :photos
+    end
   end
+
+  # admin
+  namespace :admin do
+    resources :places
   end
 end

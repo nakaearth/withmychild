@@ -1,0 +1,19 @@
+h1 Listing admin_places
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @admin_places.each do |admin_place|
+      tr
+        td = link_to 'Show', admin_place
+        td = link_to 'Edit', edit_admin_place_path(admin_place)
+        td = link_to 'Destroy', admin_place, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Place', new_admin_place_path

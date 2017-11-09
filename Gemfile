@@ -123,4 +123,7 @@ gem 'kaminari'
 gem 'attr_encrypted'
 # プロセス管理
 gem 'foreman'
+# UI framework
+gem 'semantic-ui-sass'
+gem 'jquery-rails'
 
