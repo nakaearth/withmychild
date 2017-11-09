@@ -71,7 +71,7 @@ group :test do
   # rakeのテスト用
   gem 'rake_shared_context'
   gem 'rspec-request_describer'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   # コードカバレッジ
