@@ -9,6 +9,10 @@ html
     = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .ui.menu
+      .header.item Famipark Admin
+      .right.menu
+        .item = current_user.name
+        = link_to 'ログアウト', logout_path, class: 'item'
 
-    script[src="https://code.jquery.com/jquery-3.1.1.min.js"]
+    = yield

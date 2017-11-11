@@ -8,6 +8,7 @@ module Admin
     # GET /admin/places.json
     def index
       #@admin_places = Admin::Place.all
+      p current_user
       @admin_places = []
     end
 
