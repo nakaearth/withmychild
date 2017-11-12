@@ -10,9 +10,11 @@ html
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
   body
     .ui.menu
-      .header.item Famipark Admin
-      .right.menu
-        .item = current_user.name
-        = link_to 'ログアウト', logout_path, class: 'item'
+      .ui.container
+        .header.item Famipark Admin
+        .right.menu
+          .item = current_user.name
+          = link_to 'ログアウト', logout_path, class: 'item'
 
-    = yield
+    #maincontent.ui.main.container
+      = yield
