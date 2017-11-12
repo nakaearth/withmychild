@@ -1,9 +1,49 @@
-= form_for @admin_place do |f|
-  - if @admin_place.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@admin_place.errors.count, "error")} prohibited this admin_place from being saved:"
-      ul
-        - @admin_place.errors.full_messages.each do |message|
-          li = message
+javascript:
+  $(function() {
+    $('.ui.dropdown').dropdown();
+  });
 
-  .actions = f.submit
+.ui.column.stackable.grid
+  .column
+    = form_for @place, html: {class: 'ui form'} do |f|
+      - if @place.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@place.errors.count, "error")} prohibited this admin_place from being saved:"
+          ul
+            - @place.errors.full_messages.each do |message|
+              li = message
+
+      .field
+        label 名前
+        .ui.fluid.input
+          input type="text"
+
+      .field
+        label 概要
+        .ui.fluid.input
+          textarea
+
+      .field
+        label 住所
+        .ui.fluid.input
+          input type="text"
+
+      .field
+        label 電話番号
+        .ui.fluid.input
+          input type="text"
+
+      .field
+        label タイプ
+        .ui.selection.dropdown
+          input type="hidden" name="type"
+          i.dropdown.icon
+          .default.text タイプ
+          .menu
+            .item data-value="cafe" カフェ
+            .item data-value="park" 公園
+            .item data-value="restaurant" レストラン
+
+      .field
+        .ui.fluid
+          = f.submit '登録する', class: 'ui button'

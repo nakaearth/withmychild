@@ -15,7 +15,7 @@ module Admin
 
     # GET /admin/places/new
     def new
-      @admin_place = Admin::Place.new
+      @place = Place.new
     end
 
     # GET /admin/places/1/edit
@@ -24,15 +24,13 @@ module Admin
 
     # POST /admin/places
     def create
-      @admin_place = Admin::Place.new(admin_place_params)
+      @place = Place.new(admin_place_params)
 
       respond_to do |format|
-        if @admin_place.save
-          format.html { redirect_to @admin_place, notice: 'Place was successfully created.' }
-          format.json { render :show, status: :created, location: @admin_place }
+        if @place.save
+          redirect_to @place, notice: 'Place was successfully created.'
         else
-          format.html { render :new }
-          format.json { render json: @admin_place.errors, status: :unprocessable_entity }
+          render :new
         end
       end
     end

@@ -1,5 +1,7 @@
-h1 New admin_place
+.ui.two.column.stackable.grid
+  .left.aligned.column
+    h1.ui.header Add Place
+  .right.aligned.column
+    = link_to 'Back', admin_places_path, class: 'ui button'
 
 == render 'form'
-
-= link_to 'Back', admin_places_path
