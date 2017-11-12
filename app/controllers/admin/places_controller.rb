@@ -2,18 +2,14 @@
 
 module Admin
   class PlacesController < ApplicationController
-    before_action :set_admin_place, only: [:show, :edit, :update, :destroy]
+    before_action :set_admin_place, only: %i[show edit update destroy]
 
     # GET /admin/places
-    # GET /admin/places.json
     def index
-      #@admin_places = Admin::Place.all
-      p current_user
-      @admin_places = []
+      @places = Place.all
     end
 
     # GET /admin/places/1
-    # GET /admin/places/1.json
     def show
     end
 
@@ -27,7 +23,6 @@ module Admin
     end
 
     # POST /admin/places
-    # POST /admin/places.json
     def create
       @admin_place = Admin::Place.new(admin_place_params)
 
@@ -43,7 +38,6 @@ module Admin
     end
 
     # PATCH/PUT /admin/places/1
-    # PATCH/PUT /admin/places/1.json
     def update
       respond_to do |format|
         if @admin_place.update(admin_place_params)
@@ -57,7 +51,6 @@ module Admin
     end
 
     # DELETE /admin/places/1
-    # DELETE /admin/places/1.json
     def destroy
       @admin_place.destroy
       respond_to do |format|
@@ -67,15 +60,16 @@ module Admin
     end
 
     private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_place
-      @admin_place = Admin::Place.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_place_params
-      params.fetch(:admin_place, {})
-    end
-end
+      # Use callbacks to share common setup or constraints between actions.
+      def set_admin_place
+        @admin_place = Admin::Place.find(params[:id])
+      end
+
+      # Never trust parameters from the scary internet, only allow the white list through.
+      def admin_place_params
+        params.fetch(:admin_place, {})
+      end
+  end
 end
 

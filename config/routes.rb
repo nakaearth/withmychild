@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   # admin
-  namespace :admin do
+  namespace :admin, format: 'html' do
     resources :places
   end
 end
