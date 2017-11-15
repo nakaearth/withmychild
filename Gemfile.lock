@@ -447,8 +447,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   coveralls
   database_cleaner
-  foreman
   factory_bot_rails
+  foreman
   geocoder
   guard
   guard-rspec
