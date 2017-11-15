@@ -121,4 +121,6 @@ gem "active_decorator"
 gem 'kaminari'
 # 暗号化
 gem 'attr_encrypted'
+# プロセス管理
+gem 'foreman'
 
