@@ -2,7 +2,7 @@
 
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :place do
     address '横浜市XX区XX 1-1-1'
     tel '0451112222'

@@ -17,13 +17,13 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simpleconv_helper'
-require 'factory_girl'
+require 'factory_bot'
 require 'database_cleaner'
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.before(:all) do
-    FactoryGirl.reload
+    FactoryBot.reload
   end
 
   config.before(:suite) do
