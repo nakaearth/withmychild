@@ -2,7 +2,7 @@
 
 include ActionDispatch::TestProcess
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :photo do
     image { fixture_file_upload("#{::Rails.root}/spec/fixtures/dog.jpeg", 'image/png') }
   end
