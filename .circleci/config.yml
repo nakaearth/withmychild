@@ -36,13 +36,12 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: bundle exec rubocop app
       - run: bundle exec rubocop spec
+      - store_test_results:
+          path: test_results
+      - run: bash .circleci/setup-heroku.sh
       - deploy:
           name: heroku deploy
           command: |
               if [ "${CIRCLE_BRANCH}" == "master" ]; then
                   git push heroku master
               fi
-
-      # Save test results for timing analysis
-      - store_test_results:
-          path: test_results
