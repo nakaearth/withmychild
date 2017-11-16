@@ -25,9 +25,7 @@ html
         .col-xs-12.col-md-4.noPadding
           .socialButtons.responsiveAlign
             a.noPadding[href="#"]
-              img[src="assets/twitter.svg" alt="image1"]
-            a.noPadding[href="#"]
-              img[src="assets/facebook.svg" alt="image1"]
-            a.noPadding[href="#"]
-              img[src="assets/behance.svg" alt="image1"]
+            = link_to(image_tag('twitter.svg'), '#')
+            = link_to(image_tag('facebook.svg'), '#')
+            = link_to(image_tag('behance.svg'), '#')
     script[src="http://code.jquery.com/jquery-1.11.0.min.js"]
