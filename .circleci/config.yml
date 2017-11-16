@@ -36,7 +36,6 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: bundle exec rubocop app
       - run: bundle exec rubocop spec
-
       - deploy:
           name: heroku deploy
           command: |
