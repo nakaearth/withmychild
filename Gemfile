@@ -123,4 +123,6 @@ gem 'kaminari'
 gem 'attr_encrypted'
 # プロセス管理
 gem 'foreman'
-
+# elasticsearch
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
