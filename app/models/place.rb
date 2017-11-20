@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Place < ApplicationRecord
+  include Searchable
+
   alias_attribute :start_time, :created_at
 
   belongs_to :user

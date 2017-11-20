@@ -1,0 +1,3 @@
+elasticsearch:
+  index_name: 'es_index_name_place'
+  alias_name: 'es_alias_name_place'

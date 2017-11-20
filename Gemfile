@@ -126,3 +126,5 @@ gem 'foreman'
 # elasticsearch
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
+# 定数設定
+gem 'config'
