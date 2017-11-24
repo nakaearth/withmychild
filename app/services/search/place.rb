@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Search
-  class Place << Base
+  class Place < Base
     def call
       @client.index_name = Settings.elasticsearch[:index_name]
       @response = @client.search(query)
@@ -19,6 +21,7 @@ module Search
 
     private
 
+    # TODO: GEO関数を使うように後々変更する
     def query
       {
         min_score: 20,

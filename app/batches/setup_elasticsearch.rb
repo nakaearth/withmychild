@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'optparse'
 
 # 1) 新規にindexを作成/データのimportをする場合
