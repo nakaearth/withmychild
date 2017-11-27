@@ -11,8 +11,6 @@ module Search
 
       @conditions = params
     end
-
-    def call; end
   end
 end
 # rubocop:enable all

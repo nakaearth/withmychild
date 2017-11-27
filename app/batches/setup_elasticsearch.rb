@@ -14,12 +14,12 @@ class SetupElasticsearch
       force = args[:force] || false
 
       logger.info('index作成')
-      Photo.create_index!(force: force)
+      Place.create_index!(force: force)
       logger.info('alias作成')
-      Photo.create_alias!
+      Place.create_alias!
       # importする
       logger.info('========= データ登録 =========')
-      Photo.bulk_import
+      Place.bulk_import
       logger.info('========データ登録完了しました ========')
     end
 
