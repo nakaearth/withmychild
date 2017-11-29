@@ -2,7 +2,7 @@
 
 module Admin
   class PlacesController < ApplicationController
-    before_action :set_admin_place, only: %i[show edit update destroy]
+    before_action :set_place, only: %i[show edit update destroy]
 
     # GET /admin/places
     def index
@@ -24,21 +24,19 @@ module Admin
 
     # POST /admin/places
     def create
-      @place = Place.new(admin_place_params)
-
-      respond_to do |format|
-        if @place.save
-          redirect_to @place, notice: 'Place was successfully created.'
-        else
-          render :new
-        end
+     @place = Place.new(place_params)
+     @place.user = current_user
+     if @place.save
+        redirect_to admin_places_url, notice: 'Place was successfully created.'
+      else
+        render :new
       end
     end
 
     # PATCH/PUT /admin/places/1
     def update
       respond_to do |format|
-        if @admin_place.update(admin_place_params)
+        if @admin_place.update(place_params)
           format.html { redirect_to @admin_place, notice: 'Place was successfully updated.' }
           format.json { render :show, status: :ok, location: @admin_place }
         else
@@ -59,15 +57,15 @@ module Admin
 
     private
 
-      # Use callbacks to share common setup or constraints between actions.
-      def set_admin_place
-        @admin_place = Admin::Place.find(params[:id])
-      end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_place
+      @place = Place.find(params[:id])
+    end
 
-      # Never trust parameters from the scary internet, only allow the white list through.
-      def admin_place_params
-        params.fetch(:admin_place, {})
-      end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def place_params
+      params.require("place").permit(:name, :description, :address, :tell, :type)
+    end
   end
 end
 
