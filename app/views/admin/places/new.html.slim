@@ -4,4 +4,7 @@
   .right.aligned.column
     = link_to 'Back', admin_places_path, class: 'ui button'
 
-== render 'form'
+.ui.column.stackable.grid
+  .column
+    = form_for @place, url: admin_places_path(@place), html: {class: 'ui form'} do |f|
+      == render partial: 'form', locals: { f: f }

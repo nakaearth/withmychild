@@ -4,7 +4,7 @@
   .right.aligned.column
     = link_to 'New Place', new_admin_place_path, class: 'ui button'
 
-.ui.five.column.stackable.grid
+.ui.four.column.stackable.grid
   - @places.each do |place|
     .column
       .ui.card.visible
@@ -17,8 +17,8 @@
         .content
           .header = place.name
           .meta
-            a.group Meta
+            a.group = place.type
           .description = place.description.truncate(50)
         .extra.content
-          = link_to 'Detail', admin_place_url(place), class: 'left floated'
-          = link_to 'Destroy', admin_place_url(place), data: { confirm: 'Are you sure?' }, method: :delete, class: 'right floated'
+          = link_to '更新', edit_admin_place_path(place), class: 'left floated'
+          = link_to '削除', admin_place_url(place), data: { confirm: 'Are you sure?' }, method: :delete, class: 'right floated'

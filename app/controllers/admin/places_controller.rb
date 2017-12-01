@@ -2,15 +2,11 @@
 
 module Admin
   class PlacesController < ApplicationController
-    before_action :set_place, only: %i[show edit update destroy]
+    before_action :set_place, only: %i[edit update destroy]
 
     # GET /admin/places
     def index
       @places = Place.all
-    end
-
-    # GET /admin/places/1
-    def show
     end
 
     # GET /admin/places/new
@@ -19,14 +15,13 @@ module Admin
     end
 
     # GET /admin/places/1/edit
-    def edit
-    end
+    def edit; end
 
     # POST /admin/places
     def create
-     @place = Place.new(place_params)
-     @place.user = current_user
-     if @place.save
+      @place = Place.new(place_params)
+      @place.user = current_user
+      if @place.save
         redirect_to admin_places_url, notice: 'Place was successfully created.'
       else
         render :new
@@ -35,24 +30,17 @@ module Admin
 
     # PATCH/PUT /admin/places/1
     def update
-      respond_to do |format|
-        if @admin_place.update(place_params)
-          format.html { redirect_to @admin_place, notice: 'Place was successfully updated.' }
-          format.json { render :show, status: :ok, location: @admin_place }
-        else
-          format.html { render :edit }
-          format.json { render json: @admin_place.errors, status: :unprocessable_entity }
-        end
+      if @place.update(place_params)
+        redirect_to admin_places_url, notice: 'Place was successfully updated.'
+      else
+        render :edit
       end
     end
 
     # DELETE /admin/places/1
     def destroy
-      @admin_place.destroy
-      respond_to do |format|
-        format.html { redirect_to admin_places_url, notice: 'Place was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      @place.destroy
+      redirect_to admin_places_url, notice: 'Place was successfully destroyed.'
     end
 
     private
