@@ -5,28 +5,45 @@ require 'rails_helper'
 RSpec.describe Search::Query::FunctionQuery do
   describe 'match_query' do
     let(:function_query) { Search::Query::FunctionQuery.new(conditions, [:description]) }
+    let!(:user) { create(:user) }
 
-    context '' do
-      let(:conditions) { { keyword: 'test', user_id: user.id } }
-      let!(:user) { create(:user) }
-      let(:query) do
-        {
-          bool: {
-            must: [
-              { term: { user_id: user.id } },
-              {
-                simple_query_string: {
-                  query: 'test',
-                  fields: ['description'],
-                  default_operator: 'and'
-                }
-              }
-            ]
+    context 'keywordでの検索' do
+      let(:conditions) { { keyword: 'test' } }
+      let(:must_queries) do
+        [
+          {
+            simple_query_string: {
+              query: 'test',
+              fields: ['description'],
+              default_operator: 'and'
+            }
           }
-        }
+        ]
       end
 
-      it { expect(function_query.match_query).to eq query }
+      it { expect(function_query.and_query).to eq must_queries }
+    end
+
+    context 'keywordとtypeでの検索' do
+      let(:conditions) { { keyword: 'test', type: 'cafe' } }
+      let(:must_queries) do
+        [
+          {
+            term: {
+              type: 'cafe'
+            }
+          },
+          {
+            simple_query_string: {
+              query: 'test',
+              fields: ['description'],
+              default_operator: 'and'
+            }
+          }
+        ]
+      end
+
+      it { expect(function_query.and_query).to eq must_queries }
     end
   end
 end

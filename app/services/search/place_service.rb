@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 module Search
-  class Place < Base
+  class PlaceService < BaseService
+    def initialize(params)
+      super(Place, params)
+    end
+
     def call
       @client.index_name = Settings.elasticsearch[:index_name]
       @response = @client.search(query)
@@ -24,12 +28,12 @@ module Search
     # TODO: GEO関数を使うように後々変更する
     def query
       {
-        min_score: 20,
+        min_score: 0.5,
         query: {
           function_score: {
             score_mode: 'sum', # functionsないのスコアの計算方法
             boost_mode: 'multiply', # クエリの合計スコアとfunctionのスコアの計算方法
-            query: Search::Query::FunctionQuery.new(@conditions, ['description']).match_query,
+            query: { bool: { must: Search::Query::FunctionQuery.new(@conditions, ['description']).and_query } },
             functions: [
               {
                 field_value_factor: {
@@ -60,7 +64,10 @@ module Search
               size: 50
             }
           }
-        }
+        },
+        from: @conditions[:page] || 0,
+        size: 20,
+        sort: { id: { order: 'desc' } }
       }.to_json
     end
   end

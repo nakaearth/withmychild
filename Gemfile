@@ -63,6 +63,7 @@ group :development do
   # 静的解析
   gem "rubycritic", :require => false
   gem 'pre-commit'
+  gem 'seed-fu', '~> 2.3'
 end
 
 group :test do

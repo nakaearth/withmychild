@@ -1,19 +1,16 @@
 # frozen_string_literal: true
 
-module Searchable
+module PlaceSearchable
   extend ActiveSupport::Concern
 
   # rubocop:disable all
   included do
     include Elasticsearch::Model
-
-    unless Rails.env.test?
-      include Elasticsearch::Model::Callbacks
-      #after_save :transfer_to_elasticsearch
-      #after_destroy :remove_from_elasticsearch
-    end
+    after_save :transfer_to_elasticsearch
+    after_destroy :remove_from_elasticsearch
 
     index_name = Settings.elasticsearch[:index_name]
+    document_type = 'place'
 
     # Set up index configuration and mapping
     settings index: {
@@ -73,38 +70,43 @@ module Searchable
       end
     end
 
-    # TODO: groupとtagsてーぐるの値をいれる
-    def as_indexed_json(_options = {})
-      as_json.merge(as_indexed_json_tag(optoins))
+    # TODO: tagsテーブルの値をいれる
+    def as_indexed_json(options = {})
+      # TODO: typeの値が入ってないおで入れる
+      as_json.
+        merge({ type: type }).
+        merge(as_indexed_json_tag(options))
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: index_name, type: 'place', id: id, body: as_indexed_json
+      __elasticsearch__.client.index  index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: index_name, type: 'place', id: id
+      __elasticsearch__.client.delete index: Settings.elasticsearch[:index_name], type: 'place', id: id
     end
   end
 
   class_methods do
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: index_name if options[:force]
-      client.indices.create index: index_name,
-                            body: {
-                              settings: settings.to_hash,
-                              mappings: mappings.to_hash
-                            }
+      client.indices.delete index: Settings.elasticsearch[:index_name] if options[:force]
+      client.indices.create(
+        index: Settings.elasticsearch[:index_name],
+        body: {
+          settings: settings.to_hash,
+          mappings: mappings.to_hash
+        }
+      )
     end
 
     def create_alias!
-      client = __elasticsearch__.client
-      if client.indices.exists_alias? name: Settings.elasticsearch[:alias_name]
-        client.indices.delete_alias index: index_name, name: Settings.elasticsearch[:alias_name]
-      end
-
-      client.indices.put_alias index: index_name, name: Settings.elasticsearch[:alias_name]
+      # client = __elasticsearch__.client
+      # if client.indices.exists_alias?(name: Settings.elasticsearch[:alias_name])
+      #   client.indices.delete_alias(index: Settings.elasticsearch[:index_name], name: Settings.elasticsearch[:alias_name])
+      # end
+      #
+      # client.indices.put_alias(index: Settings.elasticsearch[:index_name], name: Settings.elasticsearch[:alias_name])
     end
 
     def bulk_import
@@ -112,8 +114,8 @@ module Searchable
 
       find_in_batches.with_index do |entries, _i|
         es.client.bulk(
-          index: es.index_name,
-          type: es.document_type,
+          index: Settings.elasticsearch[:index_name],
+          type: 'place',
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
           refresh: true, # NOTE: 定期的にrefreshしないとEsが重くなる
         )
