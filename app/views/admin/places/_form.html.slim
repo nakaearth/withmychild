@@ -1,0 +1,49 @@
+javascript:
+  $(function() {
+    $('.ui.dropdown').dropdown();
+  });
+
+- if @place.errors.any?
+  #error_explanation
+    h2 = "#{pluralize(@place.errors.count, "error")} prohibited this admin_place from being saved:"
+    ul
+      - @place.errors.full_messages.each do |message|
+        li = message
+
+.field
+  label 名前
+  .ui.fluid.input
+    = text_field(:place, :name)
+
+.field
+  label 概要
+  .ui.fluid.input
+    = text_area(:place, :description)
+
+.field
+  label 住所
+  .ui.fluid.input
+    = text_field(:place, :address)
+
+.field
+  label 電話番号
+  .ui.fluid.input
+    = text_field(:place, :tel)
+
+.field
+  label タイプ
+  .ui.selection.dropdown
+    = hidden_field(:place, :type)
+    i.dropdown.icon
+    .default.text タイプ
+    .menu
+      .item data-value="Cafe" カフェ
+      .item data-value="Park" 公園
+      .item data-value="Restaurant" レストラン
+
+.field
+  .ui.fluid
+    - if request.path_info == new_admin_place_path
+      = f.submit '登録する', class: 'ui button'
+    - else
+      = f.submit '更新する', class: 'ui button'

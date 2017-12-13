@@ -1,0 +1,24 @@
+.ui.two.column.stackable.grid
+  .left.aligned.column
+    h1.ui.header Place List
+  .right.aligned.column
+    = link_to 'New Place', new_admin_place_path, class: 'ui button'
+
+.ui.four.column.stackable.grid
+  - @places.each do |place|
+    .column
+      .ui.card.visible
+        .image.dimmable
+          .ui.blurring.inverted.dimmer.transition.hidden
+            .content
+              .center
+                .ui.teal.button Add Friend
+          img[src="/assets/wireframe.png" alt="image1"]
+        .content
+          .header = place.name
+          .meta
+            a.group = place.type
+          .description = place.description.truncate(50)
+        .extra.content
+          = link_to '更新', edit_admin_place_path(place), class: 'left floated'
+          = link_to '削除', admin_place_url(place), data: { confirm: 'Are you sure?' }, method: :delete, class: 'right floated'
