@@ -9,17 +9,17 @@ FactoryBot.define do
 
     trait :park do
       type 'Park'
-      description "これは公園です"
+      description 'これはテスト。これは公園です'
     end
 
     trait :cafe do
       type 'Cafe'
-      description "これはカフェです"
+      description 'これはテスト。これはカフェです'
     end
 
     trait :restaurant do
       type 'Restaurant'
-      description "これはレストランです"
+      description 'これはテスト。これはレストランです'
     end
   end
 end

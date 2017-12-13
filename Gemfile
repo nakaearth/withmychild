@@ -63,6 +63,7 @@ group :development do
   # 静的解析
   gem "rubycritic", :require => false
   gem 'pre-commit'
+  gem 'seed-fu', '~> 2.3'
 end
 
 group :test do
@@ -123,4 +124,8 @@ gem 'kaminari'
 gem 'attr_encrypted'
 # プロセス管理
 gem 'foreman'
-
+# elasticsearch
+gem 'elasticsearch-rails'
+gem 'elasticsearch-model'
+# 定数設定
+gem 'config'
