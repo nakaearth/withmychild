@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "admin/places/new", type: :view do
   before(:each) do
-    assign(:admin_place, Admin::Place.new())
+    assign(:admin_place, Admin::Place.new)
   end
 
   it "renders new admin_place form" do

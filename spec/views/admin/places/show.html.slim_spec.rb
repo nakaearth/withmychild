@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "admin/places/show", type: :view do
   before(:each) do
-    @admin_place = assign(:admin_place, Admin::Place.create!())
+    @admin_place = assign(:admin_place, Admin::Place.create!)
   end
 
   it "renders attributes in <p>" do
