@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: famipark_development
+  database: withMyChild_development
   host: <%= ENV['DB_SERVERNAME'] %>
 
 test:
   <<: *default
-  database: famipark_test
+  database: withMyChild_test
   host: 127.0.0.1
   port: 3306
 
