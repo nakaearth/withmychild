@@ -3,10 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe "admin/places/index", type: :view do
+  let(:user) { create(:user) }
+
   before(:each) do
-    assign(:admin_places, [
-             Place.create!,
-             Place.create!
+    assign(:places, [
+             create(:place, :park, user: user),
+             create(:place, :cafe, user: user)
            ])
   end
 

@@ -44,7 +44,8 @@ RSpec.describe Admin::PlacesController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      place = Place.create! valid_attributes
+      Place.create! valid_attributes
+
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
