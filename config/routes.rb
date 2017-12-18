@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   # web
-  resources :places do
+  resources :places, format: 'html', only: [:show] do
     resources :photos
   end
   resources :users
