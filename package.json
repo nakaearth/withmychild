@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nakaearth/famipark.git"
+    "url": "git+https://github.com/nakaearth/withMyChild.git"
   },
   "bugs": {
-    "url": "https://github.com/nakaearth/famipark/issues"
+    "url": "https://github.com/nakaearth/withMyChild/issues"
   },
-  "homepage": "https://github.com/nakaearth/famipark#readme"
+  "homepage": "https://github.com/nakaearth/withMyChild#readme"
 }

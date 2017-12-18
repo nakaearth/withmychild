@@ -28,7 +28,7 @@ open "http://localhost:3000"
 open a terminal app:
 
 ```
-docker attach withMyChild_app_1
+docker attach withmychild_app_1
 ```
 
 コンソールがattachされるので、pryを仕込んで確認する
