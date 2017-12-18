@@ -1,4 +1,4 @@
-# Famipark
+# withMyChild
 
 ## Requirement
 
@@ -9,8 +9,8 @@
 open a terminal app:
 
 ```
-git clone <this repository uri> famipark
-cd famipark
+git clone <this repository uri> withMyChild
+cd withMyChild
 docker-compose build
 docker-compose up
 docker-compose run app bundle exec rake db:setup
@@ -28,7 +28,7 @@ open "http://localhost:3000"
 open a terminal app:
 
 ```
-docker attach famipark_app_1
+docker attach withMyChild_app_1
 ```
 
 コンソールがattachされるので、pryを仕込んで確認する
