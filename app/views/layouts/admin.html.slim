@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Famipark<Admin>
+      | withMyChild<Admin>
     meta[charset="utf-8"]
     meta[name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"]
     = csrf_meta_tags
@@ -11,7 +11,7 @@ html
   body
     .ui.menu
       .ui.container
-        .header.item Famipark Admin
+        .header.item withMyChild Admin
         .right.menu
           .item = current_user.name
           = link_to 'ログアウト', logout_path, class: 'item'
