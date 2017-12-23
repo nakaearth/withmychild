@@ -4,7 +4,7 @@ include ActionDispatch::TestProcess
 
 FactoryBot.define do
   factory :place do
-    address '横浜市XX区XX 1-1-1'
+    address '横浜市青葉区'
     tel '0451112222'
 
     trait :park do

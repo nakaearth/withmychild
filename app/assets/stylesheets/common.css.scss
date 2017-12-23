@@ -1,0 +1,145 @@
+// ここから ライブラリ関連 の指定
+// 変数宣言
+$red: rgb(255, 0, 1);
+$green: rgb(51, 153, 50);
+$blue: rgb(0,191,255);
+$body-bg: #F4F4F4;
+$body-font-color: #7B7B7B;
+$primary-color: #999;
+$secondary-color: #0CC;
+$dark-color: #393939;
+$block-container-border-color: rgb(218, 218, 218);
+$block-container-shadow-color: rgb(208, 208, 208);
+$active-color: #5176ae;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin border-top-left-radius($radius) {
+  -webkit-border-top-left-radius: $radius;
+      -moz-border-radius-topleft: $radius;
+          border-top-left-radius: $radius;
+}
+@mixin border-top-right-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+      -moz-border-radius-topright: $radius;
+          border-top-right-radius: $radius;
+}
+@mixin border-bottom-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+      -moz-border-radius-bottomright: $radius;
+          border-bottom-right-radius: $radius;
+}
+@mixin border-bottom-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+      -moz-border-radius-bottomleft: $radius;
+          border-bottom-left-radius: $radius;
+}
+
+// 全画面共通設定
+body {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: image-url("bg.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+menu {
+  height: 36px;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #3725A8;
+}
+
+header {
+  color: #000000;
+  position: absolute;
+  height: 36px;
+  height: 90%;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 18px;
+  line-height: 36px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+.message_info {
+  background-color: #CCFFFF;
+  text-align: left;
+  font-weight: bold;
+  font-size: 10pt;
+  padding-left: 15px;
+}
+.contents_menu {
+  text-align: left;
+  font-size: 9pt;
+}
+
+.modal {
+  text-align: left;
+}
+
+.modal-header {
+  padding: 15px 20px;
+  p {
+    word-break: break-all;
+    font-weight: bold;
+  }
+  #modal-close-btn {
+    cursor: pointer;
+  }
+}
+
+.title {
+  font-weight: bold;
+  font-size: 15pt;
+}
+
+label {
+   font-size: 10pt;
+   font-weight: bold;
+   font-color: #FFFFFF;
+}
+
+div {
+   .field{
+     font-color: #FFFFFF;
+     margin:{
+       bottom: 10px;
+     }
+  }
+}
+
+.tab {
+  border-bottom: 2px solid #dedede;
+  li {
+    a {
+      display: block;
+      padding: 13px 5px;
+      min-width: 130px;
+      color: #666;
+      text-align: center;
+      font-weight: bold;
+    }
+    &.active,
+    &:hover {
+      margin-bottom: -2px;
+      a {
+        padding-bottom: 12px;
+        border-bottom: 3px solid $active-color;
+        color: $active-color;
+      }
+    }
+  }
+}
+
+

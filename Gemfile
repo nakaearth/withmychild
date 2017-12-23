@@ -132,4 +132,8 @@ gem 'config'
 # UI framework
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
-
+gem 'font-awesome-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-modal-rails'
+# ブラウザ判定、UA判定に使う
+gem 'browser'

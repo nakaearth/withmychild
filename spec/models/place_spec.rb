@@ -33,6 +33,22 @@ RSpec.describe Place, type: :model do
       it { expect(@test_place.class.name).to eq 'Park' }
     end
 
+    context 'addressに値がセットされている場合' do
+      before do
+        @test_place = user.places.build(
+          {
+            description: 'テストほげ',
+            type: 'Park',
+            address: '横浜市青葉区'
+          }
+        )
+        @test_place.save
+      end
+
+      it { expect(@test_place.latitude).not_to be_nil }
+      it { expect(@test_place.longitude).not_to be_nil }
+    end
+
     # TODO: 将来的にplaceにTagつけするようにしたいかもね
     # context 'user経由でtagを作成する' do
     #   before do
