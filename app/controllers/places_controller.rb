@@ -8,10 +8,13 @@ class PlacesController < ApplicationController
   before_action :set_place, only: %i[edit show destroy]
 
   def index
+    # 検索Formの追加
+    @place_form = PlaceForm.new(params)
+
     respond_to do |format|
       @places = Place.preload(:photos).all.page(params[:page])
-      format.html
 
+      format.html
       format.json { render 'api/places/index' }
     end
   end
@@ -24,14 +27,11 @@ class PlacesController < ApplicationController
     @place = @current_user.places.build
   end
 
+  # TODO: 検索処理を実装する
   def create
-    @place = @current_user.places.build(place_params)
-
     begin
-      @place.save!
-      redirect_to place_photos_path(place_id: Place.encrypt_id(@place.id.to_s)), notice: '登録しました'
+      @places = Search::PlaceService.new(search_params).call
     rescue ActiveRecord::RecordInvalid => e
-      @albums = @current_user.places
       # TODO: ここエラーログはログ出力させたいっすね
       logger.error(error_message: e.message)
 
@@ -73,5 +73,13 @@ class PlacesController < ApplicationController
     ]
 
     params.require(:place).permit(colums_name)
+  end
+
+  def search_params
+    permitted_params = [
+     :keyword
+    ]
+
+    params.require(:search_form).permit(permitted_params)
   end
 end
