@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   include UserAgent
   include DecryptedId
 
-  before_action :set_request_variant
+  #before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
 
   def index
@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    render partial: 'show', format: :html
+    render :layout => nil
   end
 
   def new
@@ -56,7 +56,7 @@ class PlacesController < ApplicationController
   end
 
   def set_place
-    @place = @current_user.places.find(Place.decrypt_id(params[:id]))
+    @place = Place.find(params[:id])
   end
 
   def place_params
