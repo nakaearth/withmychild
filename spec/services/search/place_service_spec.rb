@@ -49,6 +49,17 @@ describe Search::PlaceService, broken: true do
     end
 
     context '位置情報による絞り込みを行う場合' do
+      let(:params) { { location: { lat: 35.5, lon: 139.5 } } }
+
+      it '位置情報に引っかかったものだけが検索にヒットする' do
+        expect(@service.hits_count.size).to eq 3
+      end
+
+      it '位置情報に引っかかったものだけが検索にヒットする' do
+        expect(@service.result_record[0].description).to eq restaurant.description
+        expect(@service.result_record[1].description).to eq park.description
+        expect(@service.result_record[2].description).to eq cafe.description
+      end
     end
   end
 end
