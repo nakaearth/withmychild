@@ -18,7 +18,7 @@ module Search
       def geo_distance_query
         {
            geo_distance: {
-              distance: '200km',
+              distance: @conditions[:location][:distance] || '100km',
               location: {
                  lat: @conditions[:location][:lat],
                  lon: @conditions[:location][:lon]
