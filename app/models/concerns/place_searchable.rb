@@ -6,8 +6,11 @@ module PlaceSearchable
   # rubocop:disable all
   included do
     include Elasticsearch::Model
-    after_save :transfer_to_elasticsearch
-    after_destroy :remove_from_elasticsearch
+
+    unless Rails.env.test?
+      after_save :transfer_to_elasticsearch
+      after_destroy :remove_from_elasticsearch
+    end
 
     index_name = Settings.elasticsearch[:index_name]
     document_type = 'place'
@@ -62,6 +65,8 @@ module PlaceSearchable
         indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
         indexes :user_id,     type: 'integer', index: 'not_analyzed'
         indexes :likes,       type: 'integer', index: 'not_analyzed'
+        indexes :latitude,    type: 'float', index: 'not_analyzed'
+        indexes :longitude,   type: 'float', index: 'not_analyzed'
         indexes :tags,        type: 'nested' do
           indexes :name,      type: 'keyword', index: 'not_analyzed'
         end

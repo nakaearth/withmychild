@@ -3,12 +3,14 @@ create_table "places", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8
   t.text     "description", limit: 1000
   t.string   "type",        limit: 20, null: false
   t.string   "address",     limit: 80, null: false
+  t.float    "latitude",               null: false
+  t.float    "longitude",              null: false
   t.string   "tel",         limit: 11
   t.integer  "user_id",     limit: 4,  default: 0, null: false
   t.integer  "likes",       limit: 4,  default: 0, null: false
   t.datetime "created_at"
   t.datetime "updated_at"
 end
-
+# TODO: ここの書き方を最新に合わせる
 add_index "places", ["user_id"], name: "index_places_on_user_id", using: :btree
 add_index "places", ["type"],    name: "index_places_on_type", using: :btree

@@ -29,14 +29,12 @@ class PlacesController < ApplicationController
 
   # TODO: 検索処理を実装する
   def create
-    begin
-      @places = Search::PlaceService.new(search_params).call
-    rescue ActiveRecord::RecordInvalid => e
-      # TODO: ここエラーログはログ出力させたいっすね
-      logger.error(error_message: e.message)
+    @places = Search::PlaceService.new(search_params).call
+  rescue ActiveRecord::RecordInvalid => e
+    # TODO: ここエラーログはログ出力させたいっすね
+    logger.error(error_message: e.message)
 
-      render action: :new, alert: '写真の登録に失敗しました'
-    end
+    render action: :new, alert: '写真の登録に失敗しました'
   end
 
   def edit; end
@@ -77,7 +75,7 @@ class PlacesController < ApplicationController
 
   def search_params
     permitted_params = [
-     :keyword
+      :keyword
     ]
 
     params.require(:search_form).permit(permitted_params)
