@@ -17,13 +17,13 @@ module Search
 
       def geo_distance_query
         {
-           geo_distance: {
-              distance: @conditions[:location][:distance] || '100km',
-              location: {
-                 lat: @conditions[:location][:lat],
-                 lon: @conditions[:location][:lon]
-              }
-           }
+          geo_distance: {
+            distance: @conditions[:location][:distance] || '100km',
+            location: {
+              lat: @conditions[:location][:lat],
+              lon: @conditions[:location][:lon]
+            }
+          }
         }
       end
     end

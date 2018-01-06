@@ -11,13 +11,13 @@ RSpec.describe Search::Query::GeoLocationQuery do
       let(:conditions) { { location: { distance: '200km', lat: 35.55, lon: 139.53 } } }
       let(:geo_query) do
         {
-           geo_distance: {
-             distance: '200km',
-             location: {
-               lat: 35.55,
-               lon: 139.53
-             }
-           }
+          geo_distance: {
+            distance: '200km',
+            location: {
+              lat: 35.55,
+              lon: 139.53
+            }
+          }
         }
       end
 
@@ -28,13 +28,13 @@ RSpec.describe Search::Query::GeoLocationQuery do
       let(:conditions) { { location: { lat: 35.55, lon: 139.53 } } }
       let(:geo_query) do
         {
-           geo_distance: {
-             distance: '100km',
-             location: {
-               lat: 35.55,
-               lon: 139.53
-             }
-           }
+          geo_distance: {
+            distance: '100km',
+            location: {
+              lat: 35.55,
+              lon: 139.53
+            }
+          }
         }
       end
 

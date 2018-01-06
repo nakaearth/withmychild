@@ -35,9 +35,9 @@ module Search
             boost_mode: 'multiply', # クエリの合計スコアとfunctionのスコアの計算方法
             query: {
               bool: {
-                 must: Search::Query::FunctionQuery.new(@conditions, ['description']).and_query,
-                 filter: Search::Query::GeoLocationQuery.new(@conditions).geo_query
-              },
+                must: Search::Query::FunctionQuery.new(@conditions, ['description']).and_query,
+                filter: Search::Query::GeoLocationQuery.new(@conditions).geo_query
+              }
             },
             functions: [
               {

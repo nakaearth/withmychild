@@ -4,7 +4,7 @@ class PlacesController < ApplicationController
   include UserAgent
   include DecryptedId
 
-  #before_action :set_request_variant
+  # before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
 
   def index
@@ -20,7 +20,7 @@ class PlacesController < ApplicationController
   end
 
   def show
-    render :layout => nil
+    render layout: nil
   end
 
   def new
