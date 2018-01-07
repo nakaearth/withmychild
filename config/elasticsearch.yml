@@ -1,7 +1,7 @@
 development:
   host:
-    # - '127.0.0.1'
-    - 'elasticsearch'
+    - '127.0.0.1'
+    # - 'elasticsearch'
   port:
     - 9200
 test:
