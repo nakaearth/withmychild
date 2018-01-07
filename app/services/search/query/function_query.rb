@@ -17,6 +17,8 @@ module Search
       end
 
       def match_query
+        return { match_all: {} } unless @conditions[:keyword]
+
         {
           simple_query_string: {
             query: @conditions[:keyword],

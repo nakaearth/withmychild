@@ -58,28 +58,31 @@ module PlaceSearchable
       }
     } do
       mapping _source: { enabled: true },
-              _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
-        indexes :id,          type: 'integer', index: 'not_analyzed'
-        indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :type,        type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :user_id,     type: 'integer', index: 'not_analyzed'
-        indexes :likes,       type: 'integer', index: 'not_analyzed'
-        indexes :latitude,    type: 'float', index: 'not_analyzed'
-        indexes :longitude,   type: 'float', index: 'not_analyzed'
-        indexes :tags,        type: 'nested' do
-          indexes :name,      type: 'keyword', index: 'not_analyzed'
+        _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
+          indexes :id,          type: 'integer', index: 'not_analyzed'
+          indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :type,        type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :user_id,     type: 'integer', index: 'not_analyzed'
+          indexes :likes,       type: 'integer', index: 'not_analyzed'
+          indexes :address,     type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :location,    type: 'geo_point' do
+            indexes :lat,       type: 'string', index: 'not_analyzed'
+            indexes :lon,       type: 'string', index: 'not_analyzed'
+          end
+          indexes :tags,        type: 'nested' do
+            indexes :name,      type: 'keyword', index: 'not_analyzed'
+          end
+          indexes :created_at,  type: 'date', format: 'date_time'
+          indexes :updated_at,  type: 'date', format: 'date_time'
         end
-        indexes :created_at,  type: 'date', format: 'date_time'
-        indexes :updated_at,  type: 'date', format: 'date_time'
-      end
     end
 
     # TODO: tagsテーブルの値をいれる
     def as_indexed_json(options = {})
-      # TODO: typeの値が入ってないおで入れる
       as_json.
         merge({ type: type }).
+        merge( location: { lat: latitude.to_s, lon: longitude.to_s }).
         merge(as_indexed_json_tag(options))
     end
 
@@ -95,7 +98,9 @@ module PlaceSearchable
   class_methods do
     def create_index!(options = {})
       client = __elasticsearch__.client
-      client.indices.delete index: Settings.elasticsearch[:index_name] if options[:force]
+      if options[:force]
+        client.indices.delete index: Settings.elasticsearch[:index_name] if client.indices.exists? index: Settings.elasticsearch[:index_name]
+      end
       client.indices.create(
         index: Settings.elasticsearch[:index_name],
         body: {
