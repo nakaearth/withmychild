@@ -15,14 +15,14 @@ services:
       context: "docker_image/elasticsearch/."
     container_name: elasticsearch
     environment:
-      - "http.host=0.0.0.0"
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
     ports:
       - 9200:9200
   app:
     build: .
     environment:
       DB_SERVERNAME: "db"
+      ELASTICSEARCH_HOST: "elasticsearch"
     volumes:
       - .:/withMyChild
     working_dir: "/withMyChild"
