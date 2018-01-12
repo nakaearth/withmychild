@@ -1,0 +1,14 @@
+network.host: 0.0.0.0
+discovery.zen.minimum_master_nodes: 1
+# transport.tcp.port: 9300
+# http.port: 9200
+
+# http.cors.enabled: true
+# http.cors.allow-origin: /https?:\/\/localhost(:[0-9]+)?/
+
+# this value is required because we set "network.host"
+# # be sure to modify it appropriately for a production cluster deployment
+# xpack.security.enabled: false
+# xpack.monitoring.enabled: true
+# xpack.graph.enabled: true
+# xpack.watcher.enabled: true

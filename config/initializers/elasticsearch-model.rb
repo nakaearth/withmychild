@@ -17,9 +17,7 @@ class ElasticsearchClient
 
     def hosts
       hosts = []
-      ElasticsearchConfig::CONFIG[:host].each_with_index do |host, i|
-        hosts << { host: host, port: ElasticsearchConfig::CONFIG[master_or_slave][:port][i] }
-      end
+      hosts << { host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }
 
       hosts
     end

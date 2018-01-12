@@ -78,7 +78,6 @@ module PlaceSearchable
         end
     end
 
-    # TODO: tagsテーブルの値をいれる
     def as_indexed_json(options = {})
       as_json.
         merge({ type: type }).
