@@ -137,3 +137,5 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap-modal-rails'
 # ブラウザ判定、UA判定に使う
 gem 'browser'
+# controllerのパラメータチェック
+gem 'weak_parameters'

@@ -27,14 +27,13 @@ class PlacesController < ApplicationController
     @place = @current_user.places.build
   end
 
-  # TODO: 検索処理を実装する
   def create
     @places = Search::PlaceService.new(search_params).call
   rescue ActiveRecord::RecordInvalid => e
     # TODO: ここエラーログはログ出力させたいっすね
     logger.error(error_message: e.message)
 
-    render action: :new, alert: '写真の登録に失敗しました'
+    render action: :new, alert: '検索処理に失敗しました'
   end
 
   def edit; end
