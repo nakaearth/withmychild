@@ -1,6 +1,6 @@
 development:
   host:
-    - <%= ENV['ELASTISEARCH_HOST'] | 'localhost' %>
+    - <%= ENV['ELASTISEARCH_HOST'] || 'localhost' %>
   port:
     - 9200
 test:
