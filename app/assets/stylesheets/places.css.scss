@@ -1,6 +1,6 @@
 @import 'common';
 
-.photo_form {
+.place_form {
    font-weight: bold;
    font-size: 10pt;
    font-color: #FFFFFF;
@@ -9,7 +9,7 @@
    height: 50%;
    margin: 10px;
    @include border-radius(4px);
-   .photo_form_div {
+   .place_form_div {
       background-color: #FFFFFF;
       border: 1px solid #FFFFFF;
       font-size: 10pt;
@@ -21,7 +21,7 @@
    }
 }
 
-.photo_list {
+.place_list {
    width: 1000pt;
    height: 500pt;
    visibility: visible;
@@ -29,7 +29,7 @@
    margin: 4px;
    z-index: 0;
    @include border-radius(5px);
-  .photo_div {
+  .place_div {
      background-color: #FFFFFF;
      border: 1px solid #FFFFFF;
      font-size: 10pt;
@@ -41,12 +41,12 @@
   }
 }
 
-.photo_default_modal {
+.place_default_modal {
   display: none;
   margin-top: 299px;
 }
 
-.photo_detail {
+.place_detail {
    background-color: #CCFFFF;
    position: fixed;
    top: 10%;

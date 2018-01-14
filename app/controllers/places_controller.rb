@@ -6,11 +6,9 @@ class PlacesController < ApplicationController
 
   # before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
+  before_action :set_search_form, only: %i[create]
 
   def index
-    # 検索Formの追加
-    @place_form = PlaceForm.new(params)
-
     respond_to do |format|
       @places = Place.preload(:photos).all.page(params[:page])
 
@@ -56,6 +54,10 @@ class PlacesController < ApplicationController
 
   def set_place
     @place = Place.find(params[:id])
+  end
+
+  def set_search_form
+    @search_form = SearchForm.new
   end
 
   def place_params

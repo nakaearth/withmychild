@@ -141,5 +141,23 @@ div {
     }
   }
 }
-
-
+.search_form {
+   font-weight: bold;
+   font-size: 10pt;
+   font-color: #FFFFFF;
+   border: 0px;
+   width: 70%;
+   height: 50%;
+   margin: 10px;
+   @include border-radius(4px);
+   .search_form_div {
+      background-color: #FFFFFF;
+      border: 1px solid #FFFFFF;
+      font-size: 10pt;
+      width: 70%;
+      height: 80%;
+      margin: 5px;
+      z-index: 1;
+      @include border-radius(4px);
+   }
+}
