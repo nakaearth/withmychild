@@ -82,7 +82,7 @@ module PlaceSearchable
     def as_indexed_json(options = {})
       as_json.
         merge({ type: type }).
-        merge( location: { lat: latitude.to_s, lon: longitude.to_s }).
+        merge( location: { lat: latitude.try(:to_s), lon: longitude.try(:to_s) }).
         merge(as_indexed_json_tag(options))
     end
 
