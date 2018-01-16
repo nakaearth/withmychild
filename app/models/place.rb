@@ -19,4 +19,10 @@ class Place < ApplicationRecord
   validates :address, length: { maximum: 80 }
 
   after_validation :geocode, if: ->(obj) { obj.address.present? and obj.address_changed? }
+
+  def first_image_url
+    return ImageUploader.new.default_url unless photos
+
+    photos.first.image.url
+  end
 end

@@ -10,9 +10,9 @@
         .place_detail id="place_viewer_#{place.id}"
           span id="close_place_#{place.id}"
             | 閉じる
-            = image_tag place.image.url
+            = image_tag place.first_image_url
         span id="place_#{place.id}"
-          = image_tag place.image.url(:thumb)
+          = image_tag place.photos.first.url(:thumb)
           | #{place.description}
           br/
           | 投稿日付 #{place.created_at.strftime("%Y/%m/%d")}
@@ -27,5 +27,5 @@
               });
         | コメント:#{place.description}
         br/
-        = link_to '拡大', album_place_path(album_id: place.album_id, id: place.id), remote: true
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', album_place_path(album_id: place.album_id, id: place.id), method: :delete,  data: { confirm: '削除しますか？'} }
+        = link_to '拡大', place_path(id: place.id), remote: true
+        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', place_path(id: place.id), method: :delete,  data: { confirm: '削除しますか？'} }
