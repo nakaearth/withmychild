@@ -12,7 +12,7 @@ $block-container-border-color: rgb(218, 218, 218);
 $block-container-shadow-color: rgb(208, 208, 208);
 $active-color: #5176ae;
 
-@mixin border-radius($radius) {
+@mixin border-radius($radius:4px) {
   -webkit-border-radius: $radius;
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
@@ -149,7 +149,7 @@ div {
    width: 70%;
    height: 50%;
    margin: 10px;
-   @include border-radius(4px);
+   @include border-radius;
    .search_form_div {
       background-color: #FFFFFF;
       border: 1px solid #FFFFFF;
@@ -158,6 +158,6 @@ div {
       height: 80%;
       margin: 5px;
       z-index: 1;
-      @include border-radius(4px);
+      @include border-radius;
    }
 }
