@@ -21,7 +21,7 @@ class Place < ApplicationRecord
   after_validation :geocode, if: ->(obj) { obj.address.present? and obj.address_changed? }
 
   def first_image_url
-    return ImageUploader.new.default_url unless photos
+    return ImageUploader.new.default_url if photos.empty?
 
     photos.first.image.url
   end

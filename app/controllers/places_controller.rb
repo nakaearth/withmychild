@@ -26,7 +26,9 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @places = Search::PlaceService.new(search_params).call
+    service = Search::PlaceService.new(search_params)
+    service.call
+    @places = service.result_record
   rescue ActiveRecord::RecordInvalid => e
     # TODO: ここエラーログはログ出力させたいっすね
     logger.error(error_message: e.message)
