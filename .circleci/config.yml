@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     parallelism: 3
-    working_directory: ~/famipark
+    working_directory: ~/withMyChild
     docker:
       - image: circleci/ruby:2.4.1-node
         environment:
@@ -26,12 +26,12 @@ jobs:
       - checkout
       # Restore bundle cache
       - restore_cache:
-          key: famipark-{{ checksum "Gemfile.lock" }}
+          key: withMyChild-{{ checksum "Gemfile.lock" }}
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
       # Store bundle cache
       - save_cache:
-          key: famipark-{{ checksum "Gemfile.lock" }}
+          key: withMyChild-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       # Database setup
