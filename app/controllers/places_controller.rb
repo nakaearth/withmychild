@@ -10,16 +10,15 @@ class PlacesController < ApplicationController
 
   def index
     respond_to do |format|
-      @places = Place.preload(:photos).all.page(params[:page])
+      service = Search::PlaceService.new(search_params)
+      @places = service.result_record
 
       format.html
       format.json { render 'api/places/index' }
     end
   end
 
-  def show
-    render layout: nil
-  end
+  def show; end
 
   def new
     @place = @current_user.places.build
@@ -55,7 +54,7 @@ class PlacesController < ApplicationController
   end
 
   def set_place
-    @place = Place.find(params[:id])
+    @place = Place.find(Place.decrypt_id(params[:id]))
   end
 
   def set_search_form

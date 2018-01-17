@@ -4,12 +4,9 @@
         span.sr-only
           | Toggle navigation
       a.navbar-brand.brandStyle
-        | withMyChild
+        = link_to_unless_current 'withMyChild', root_path
     #myNavbar.collapse.navbar-collapse.noPadding
       .navbar-left.menustyle
-        ul.nav.navbar-nav
-          li
-            = link_to_unless_current '一覧'
       .navbar-right.menustyle
         li
           = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)

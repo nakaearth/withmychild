@@ -7,25 +7,10 @@
     - @places.each do |place|
       tr
       .place_div
-        .place_detail id="place_viewer_#{place.id}"
-          span id="close_place_#{place.id}"
-            | 閉じる
-            = image_tag place.first_image_url
-        span id="place_#{place.id}"
-          = image_tag place.photos.first.url(:thumb)
+        span
+          = image_tag place.first_image_url(:thumb)
           | #{place.description}
           br/
           | 投稿日付 #{place.created_at.strftime("%Y/%m/%d")}
           br/
-        javascript:
-          $( '#place_#{place.id}' ).click(function (){
-              $( '#place_viewer_#{place.id}' ).fadeIn("slow");
-              });
-        javascript:
-          $( '#place_viewer_#{place.id}' ).click(function (){
-              $( '#place_viewer_#{place.id}' ).fadeOut("slow");
-              });
-        | コメント:#{place.description}
-        br/
-        = link_to '拡大', place_path(id: place.id), remote: true
-        | &nbsp;&nbsp; | &nbsp;&nbsp; #{ link_to '削除', place_path(id: place.id), method: :delete,  data: { confirm: '削除しますか？'} }
+        = link_to '詳細', place_path(id: Place.encrypt_id(place.id.to_s))

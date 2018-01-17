@@ -2,11 +2,11 @@
 // 変数宣言
 $red: rgb(255, 0, 1);
 $green: rgb(51, 153, 50);
-$blue: rgb(0,191,255);
-$body-bg: #F4F4F4;
-$body-font-color: #7B7B7B;
+$blue: rgb(0, 191, 255);
+$body-bg: #f4f4f4;
+$body-font-color: #7b7b7b;
 $primary-color: #999;
-$secondary-color: #0CC;
+$secondary-color: #0cc;
 $dark-color: #393939;
 $block-container-border-color: rgb(218, 218, 218);
 $block-container-shadow-color: rgb(208, 208, 208);
@@ -14,29 +14,33 @@ $active-color: #5176ae;
 
 @mixin border-radius($radius:4px) {
   -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
 }
+
 @mixin border-top-left-radius($radius) {
   -webkit-border-top-left-radius: $radius;
-      -moz-border-radius-topleft: $radius;
-          border-top-left-radius: $radius;
+  -moz-border-radius-topleft: $radius;
+  border-top-left-radius: $radius;
 }
+
 @mixin border-top-right-radius($radius) {
   -webkit-border-top-right-radius: $radius;
-      -moz-border-radius-topright: $radius;
-          border-top-right-radius: $radius;
+  -moz-border-radius-topright: $radius;
+  border-top-right-radius: $radius;
 }
+
 @mixin border-bottom-right-radius($radius) {
   -webkit-border-bottom-right-radius: $radius;
-      -moz-border-radius-bottomright: $radius;
-          border-bottom-right-radius: $radius;
+  -moz-border-radius-bottomright: $radius;
+  border-bottom-right-radius: $radius;
 }
+
 @mixin border-bottom-left-radius($radius) {
   -webkit-border-bottom-left-radius: $radius;
-      -moz-border-radius-bottomleft: $radius;
-          border-bottom-left-radius: $radius;
+  -moz-border-radius-bottomleft: $radius;
+  border-bottom-left-radius: $radius;
 }
 
 // 全画面共通設定
@@ -56,11 +60,11 @@ menu {
   height: 36px;
   font-size: 10pt;
   font-weight: bold;
-  color: #3725A8;
+  color: #3725a8;
 }
 
 header {
-  color: #000000;
+  color: #000;
   position: absolute;
   height: 36px;
   height: 90%;
@@ -72,13 +76,15 @@ header {
   font-weight: bold;
   padding-left: 15px;
 }
+
 .message_info {
-  background-color: #CCFFFF;
+  background-color: #cff;
   text-align: left;
   font-weight: bold;
   font-size: 10pt;
   padding-left: 15px;
 }
+
 .contents_menu {
   text-align: left;
   font-size: 9pt;
@@ -90,10 +96,12 @@ header {
 
 .modal-header {
   padding: 15px 20px;
+
   p {
     word-break: break-all;
     font-weight: bold;
   }
+
   #modal-close-btn {
     cursor: pointer;
   }
@@ -105,22 +113,21 @@ header {
 }
 
 label {
-   font-size: 10pt;
-   font-weight: bold;
-   font-color: #FFFFFF;
+  font-size: 10pt;
+  font-weight: bold;
+  color: #fff;
 }
 
 div {
-   .field{
-     font-color: #FFFFFF;
-     margin:{
-       bottom: 10px;
-     }
+  .field {
+    color: #fff;
+    margin-bottom: 10px;
   }
 }
 
 .tab {
   border-bottom: 2px solid #dedede;
+
   li {
     a {
       display: block;
@@ -130,9 +137,11 @@ div {
       text-align: center;
       font-weight: bold;
     }
+
     &.active,
     &:hover {
       margin-bottom: -2px;
+
       a {
         padding-bottom: 12px;
         border-bottom: 3px solid $active-color;
@@ -141,23 +150,27 @@ div {
     }
   }
 }
+
 .search_form {
-   font-weight: bold;
-   font-size: 10pt;
-   color: #FFFFFF;
-   border: 0px;
-   width: 70%;
-   height: 50%;
-   margin: 10px;
-   @include border-radius;
-   .search_form_div {
-      background-color: #FFFFFF;
-      border: 1px solid #FFFFFF;
-      font-size: 10pt;
-      width: 70%;
-      height: 80%;
-      margin: 5px;
-      z-index: 1;
-      @include border-radius;
-   }
+  font-weight: bold;
+  font-size: 10pt;
+  color: #fff;
+  border: 0;
+  width: 70%;
+  height: 50%;
+  margin: 10px;
+
+  @include border-radius;
+
+  .search_form_div {
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 10pt;
+    width: 70%;
+    height: 80%;
+    margin: 5px;
+    z-index: 1;
+
+    @include border-radius;
+  }
 }
