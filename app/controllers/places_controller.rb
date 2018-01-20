@@ -6,35 +6,33 @@ class PlacesController < ApplicationController
 
   # before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
+  before_action :set_search_form, only: %i[create]
 
   def index
-    # 検索Formの追加
-    @place_form = PlaceForm.new(params)
-
     respond_to do |format|
-      @places = Place.preload(:photos).all.page(params[:page])
+      service = Search::PlaceService.new(search_params)
+      @places = service.result_record
 
       format.html
       format.json { render 'api/places/index' }
     end
   end
 
-  def show
-    render layout: nil
-  end
+  def show; end
 
   def new
     @place = @current_user.places.build
   end
 
-  # TODO: 検索処理を実装する
   def create
-    @places = Search::PlaceService.new(search_params).call
+    service = Search::PlaceService.new(search_params)
+    service.call
+    @places = service.result_record
   rescue ActiveRecord::RecordInvalid => e
     # TODO: ここエラーログはログ出力させたいっすね
     logger.error(error_message: e.message)
 
-    render action: :new, alert: '写真の登録に失敗しました'
+    render action: :new, alert: '検索処理に失敗しました'
   end
 
   def edit; end
@@ -56,7 +54,11 @@ class PlacesController < ApplicationController
   end
 
   def set_place
-    @place = Place.find(params[:id])
+    @place = Place.find(Place.decrypt_id(params[:id]))
+  end
+
+  def set_search_form
+    @search_form = SearchForm.new
   end
 
   def place_params
