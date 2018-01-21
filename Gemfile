@@ -139,3 +139,7 @@ gem 'bootstrap-modal-rails'
 gem 'browser'
 # controllerのパラメータチェック
 gem 'weak_parameters'
+# graphql
+gem 'graphql'
+
+gem 'graphiql-rails', group: :development

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'top#index'
 
@@ -17,6 +21,8 @@ Rails.application.routes.draw do
 
   # api
   namespace :api do
+    post "/graphql", to: "graphql#execute"
+
     resources :places do
       resources :photos
     end

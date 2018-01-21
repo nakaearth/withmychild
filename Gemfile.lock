@@ -182,6 +182,9 @@ GEM
     geocoder (1.4.4)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.4.8)
+      rails
+    graphql (1.7.8)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -531,6 +534,8 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   geocoder
+  graphiql-rails
+  graphql
   guard
   guard-rspec
   guard-rubocop
