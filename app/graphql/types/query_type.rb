@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
   # Add root-level fields here.
@@ -6,7 +8,7 @@ Types::QueryType = GraphQL::ObjectType.define do
   # TODO: remove me
   field :testField, types.String do
     description "An example field added by the generator"
-    resolve ->(obj, args, ctx) {
+    resolve ->(_obj, _args, _ctx) {
       "Hello World!"
     }
   end
