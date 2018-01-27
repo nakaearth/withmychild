@@ -11,4 +11,5 @@ Types::PlaceType = GraphQL::ObjectType.define do
   field :lat, !types.String
   field :lot, !types.String
   field :tag_name, !types.String
+  field :photo_id, !Types::PhotoType
 end
