@@ -10,7 +10,7 @@ RSpec.describe Photos::PhotoUploading, broken: true do
   end
 
   let(:user) { create(:user) }
-  let(:place) { create(:place, :cafe, user: user)}
+  let(:place) { create(:place, :cafe, user: user) }
 
   describe 'file_upload' do
     context '地域情報なし' do
