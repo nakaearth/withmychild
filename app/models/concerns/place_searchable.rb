@@ -101,6 +101,7 @@ module PlaceSearchable
       if options[:force]
         client.indices.delete index: Settings.elasticsearch[:index_name] if client.indices.exists? index: Settings.elasticsearch[:index_name]
       end
+
       client.indices.create(
         index: Settings.elasticsearch[:index_name],
         body: {
