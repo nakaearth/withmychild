@@ -5,21 +5,22 @@ require 'rails_helper'
 RSpec.describe Photos::PhotoUploading, broken: true do
   let(:photo_params) do
     {
-      description: 'これはテスト',
       image: File.open("#{Rails.root}/spec/fixtures/dog.jpeg")
     }
   end
 
   let(:user) { create(:user) }
+  let(:place) { create(:place, :cafe, user: user)}
 
   describe 'file_upload' do
     context '地域情報なし' do
       before do
         user
-        Photos::PhotoUploding.execute(user, photo_params)
+        place
+        Photos::PhotoUploading.execute(place, photo_params)
       end
 
-      it { expect(User.find(user.id).photos.count).to be > 0 }
+      it { expect(Place.find(place.id).photos.count).to be > 0 }
     end
 
     # TODO: nested_attributeの動きが違う？要確認!!!!
@@ -46,12 +47,11 @@ RSpec.describe Photos::PhotoUploading, broken: true do
     context 'file_upload_error' do
       let(:photo_params) do
         {
-          description: 'これはテスト',
           image: File.open("#{Rails.root}/spec/fixtures/test.txt")
         }
       end
 
-      it { expect { Photos::PhotoUploding.execute(user, photo_params) }.to raise_error(ActiveRecord::RecordInvalid) }
+      it { expect { Photos::PhotoUploading.execute(place, photo_params) }.to raise_error(ActiveRecord::RecordInvalid) }
     end
   end
 end

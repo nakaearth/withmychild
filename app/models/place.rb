@@ -2,6 +2,7 @@
 
 class Place < ApplicationRecord
   include PlaceSearchable
+  include IdEncryptable
 
   alias_attribute :start_time, :created_at
 

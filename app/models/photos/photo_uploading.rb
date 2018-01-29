@@ -2,9 +2,9 @@
 
 module Photos
   class PhotoUploading
-    def self.execute(current_user, photo_params)
+    def self.execute(place, photo_params)
       new.instance_eval do
-        @photo = current_user.photos.build(photo_params)
+        @photo = place.photos.build(photo_params)
 
         execute
       end

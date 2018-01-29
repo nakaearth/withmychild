@@ -6,7 +6,7 @@ end
 class ElasticsearchClient
   class << self
     def client
-      if Rails.env.production?
+      if ENV['RAILS_ENV'] == 'production'
         return connection_to_bonsai
       end
 
@@ -16,21 +16,11 @@ class ElasticsearchClient
     private
 
     def hosts
-      hosts = []
-      ElasticsearchConfig::CONFIG[:host].each_with_index do |host, i|
-        hosts << { host: host, port: ElasticsearchConfig::CONFIG[:port][i] }
-      end
-
-      hosts
+     { host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }
     end
 
     def urls
-      urls = []
-      ElasticsearchConfig::CONFIG[:url].each_with_index do |url, i|
-        urls << { url: url }
-      end
-
-      urls
+      ElasticsearchConfig::CONFIG[:url]
     end
 
 
