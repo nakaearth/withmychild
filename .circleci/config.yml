@@ -48,7 +48,6 @@ jobs:
       - store_test_results:
           path: test_results
       - run: bash .circleci/setup-heroku.sh
-      - run: cp config/elasticsearch.yml.deploy config/elasticsearch.yml
       - deploy:
           name: heroku deploy
           command: |
