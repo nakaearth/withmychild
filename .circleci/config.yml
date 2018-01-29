@@ -31,7 +31,7 @@ jobs:
       - run: bundle install --path vendor/bundle
       # Store bundle cache
       - save_cache:
-          key: withMyChild-{{ checksum "Gemfile.lock" }}
+          key: withmychild-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       # Database setup
@@ -48,6 +48,7 @@ jobs:
       - store_test_results:
           path: test_results
       - run: bash .circleci/setup-heroku.sh
+      - run: cp config/elasticsearch.yml.deploy config/elasticsearch.yml
       - deploy:
           name: heroku deploy
           command: |
