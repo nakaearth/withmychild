@@ -127,6 +127,7 @@ gem 'foreman'
 # elasticsearch
 gem 'elasticsearch-rails'
 gem 'elasticsearch-model'
+gem 'faraday_middleware-aws-signers-v4'
 # 定数設定
 gem 'config'
 # UI framework
