@@ -1,3 +1,2 @@
 production:
-  url:
-    - <%= ENV['BONSAI_URL'] %>
+  url: <%= ENV['BONSAI_URL'] %>
