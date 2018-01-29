@@ -97,7 +97,7 @@ module PlaceSearchable
 
   class_methods do
     def create_index!(options = {})
-      client = __elasticsearch__.client
+      client = ElasticsearchClient.client
       if options[:force]
         client.indices.delete index: Settings.elasticsearch[:index_name] if client.indices.exists? index: Settings.elasticsearch[:index_name]
       end
@@ -112,7 +112,7 @@ module PlaceSearchable
     end
 
     def create_alias!
-      # client = __elasticsearch__.client
+      # client = ElasticsearchClient.client
       # if client.indices.exists_alias?(name: Settings.elasticsearch[:alias_name])
       #   client.indices.delete_alias(index: Settings.elasticsearch[:index_name], name: Settings.elasticsearch[:alias_name])
       # end

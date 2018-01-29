@@ -13,9 +13,8 @@ class SetupElasticsearch
       logger = ActiveSupport::Logger.new("log/setting_batch.log", 'daily')
       force = args[:force] || false
 
-      puts("RAILS_ENV: #{ENV['RAILS_ENV']}")
-      puts("本番環境です") if Rails.env.production?
       logger.info('index作成')
+      Place.__elasticsearch__.client = ElasticsearchClient.client
       Place.create_index!(force: force)
       logger.info('alias作成')
       Place.create_alias!

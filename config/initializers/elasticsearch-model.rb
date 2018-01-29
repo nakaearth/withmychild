@@ -6,7 +6,6 @@ end
 class ElasticsearchClient
   class << self
     def client
-      puts ElasticsearchConfig::CONFIG
       if ENV['RAILS_ENV'] == 'production'
         return connection_to_bonsai
       end
@@ -17,7 +16,7 @@ class ElasticsearchClient
     private
 
     def hosts
-     { host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }
+     [{ host: ElasticsearchConfig::CONFIG[:host][0], port: ElasticsearchConfig::CONFIG[:port][0] }]
     end
 
     def urls
