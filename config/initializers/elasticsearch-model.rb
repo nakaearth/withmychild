@@ -16,11 +16,11 @@ class ElasticsearchClient
     private
 
     def hosts
-     [{ host: ElasticsearchConfig::CONFIG[:host][0], port: ElasticsearchConfig::CONFIG[:port][0] }]
+     [{ host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }]
     end
 
-    def urls
-      ElasticsearchConfig::CONFIG[:url][0]
+    def url
+      ElasticsearchConfig::CONFIG[:url]
     end
 
 
@@ -40,7 +40,7 @@ class ElasticsearchClient
       require 'faraday_middleware/aws_signers_v4'
 
       Elasticsearch::Client.new(
-        url: urls,
+        url: url,
         randomize_hosts: true,
         request_timeout: 10,
         reload_connections: false,
