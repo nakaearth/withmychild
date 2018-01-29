@@ -1,15 +1,20 @@
-- if current_user
-    .navbar-header
-      button.navbar-toggle[type="button" data-toggle="collapse" data-target="#myNavbar"]
-        span.sr-only
-          | Toggle navigation
-      a.navbar-brand.brandStyle
-        = link_to_unless_current 'withMyChild', root_path
-    #myNavbar.collapse.navbar-collapse.noPadding
-      .navbar-left.menustyle
-      .navbar-right.menustyle
-        li
-          = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)
-          = current_user.nickname
-          = link_to "ログアウト", logout_path
+.navbar-header
+  button.navbar-toggle[type="button" data-toggle="collapse" data-target="#myNavbar"]
+    span.sr-only
+      | Toggle navigation
+  a.navbar-brand.brandStyle
+    = link_to_unless_current 'withMyChild', root_path
+#myNavbar.collapse.navbar-collapse.noPadding
+
+  .navbar-left.menustyle
+  - unless current_user
+    .navbar-right.menustyle
+      li
+        = link_to image_tag('facebook.svg'), "/facebook/login"
+  - else current_user
+    .navbar-right.menustyle
+      li
+        = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)
+        = current_user.nickname
+        = link_to "ログアウト", logout_path
 
