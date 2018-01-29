@@ -10,12 +10,12 @@ default: &default
 
 development:
   <<: *default
-  database: withMyChild_development
+  database: withmychild_development
   host: <%= ENV['DB_SERVERNAME'] %>
 
 test:
   <<: *default
-  database: withMyChild_test
+  database: withmychild_test
   host: 127.0.0.1
   port: 3306
 
