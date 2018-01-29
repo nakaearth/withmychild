@@ -20,7 +20,7 @@ class ElasticsearchClient
     end
 
     def urls
-      ElasticsearchConfig::CONFIG[:url]
+      ElasticsearchConfig::CONFIG[:url][0]
     end
 
 
