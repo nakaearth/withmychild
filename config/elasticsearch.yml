@@ -1,5 +1,5 @@
 development:
-  host: <%= ENV['ELASTICSEARCH_HOST'] %>
+  host: 'elasticsearch'
   port: 9200
 test:
   host: '127.0.0.1'
