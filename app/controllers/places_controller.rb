@@ -12,9 +12,6 @@ class PlacesController < ApplicationController
     respond_to do |format|
       service = Search::PlaceService.new(search_params)
       @places = service.result_record
-
-      format.html
-      format.json { render 'api/places/index' }
     end
   end
 

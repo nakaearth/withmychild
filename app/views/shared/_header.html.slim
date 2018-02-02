@@ -13,8 +13,7 @@
         = link_to image_tag('facebook.svg'), "/facebook/login"
   - else current_user
     .navbar-right.menustyle
-      li
-        = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)
-        = current_user.nickname
-        = link_to "ログアウト", logout_path
+      = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)
+      = current_user.nickname
+      = link_to "ログアウト", logout_path
 
