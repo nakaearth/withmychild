@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.places do
   json.array!(@places.map) do |place|
     json.id place.id

@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
   before_action :set_search_form, only: %i[create]
 
   def index
-    respond_to do |format|
+    respond_to do |_format|
       service = Search::PlaceService.new(search_params)
       @places = service.result_record
     end
