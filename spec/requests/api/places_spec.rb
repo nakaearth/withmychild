@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Api::PlacesController, broken: true do
@@ -16,28 +18,28 @@ describe Api::PlacesController, broken: true do
       Place.create_alias!
       Place.bulk_import
 
-      post :create, params
+      post api_places_path(params)
     end
 
     context 'user not_exist' do
-      let(:params) {
+      let(:params) do
         {
           keyword: 'テスト',
           uid: "11111111#{user.uid}"
         }
-      }
+      end
 
-      it { expect(response.status).to eq 400 }
+      it { expect(response.status).to eq 404 }
     end
 
     context 'キーワード検索' do
-      let(:params) {
+      let(:params) do
         {
           keyword: 'テスト',
           uid: user.uid
         }
-      }
-      let(:expected_json) {
+      end
+      let(:expected_json) do
         {
           places: [
             {
@@ -57,10 +59,10 @@ describe Api::PlacesController, broken: true do
               description: cafe.description,
               type: cafe.type,
               address: cafe.address
-            },
+            }
           ]
-        }
-      }
+        }.with_indifferent_access
+      end
 
       it { expect(JSON.parse(response.body).with_indifferent_access).to eq expected_json }
     end

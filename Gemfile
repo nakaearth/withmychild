@@ -102,6 +102,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 認証
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
 # バッチ処理
 gem 'whenever',  :require => false
 

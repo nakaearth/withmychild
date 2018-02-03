@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users
 
   # api
-  namespace :api do
+  namespace :api, format: 'json' do
     post "/graphql", to: "graphql#execute"
 
     resources :places, only: [:create] do

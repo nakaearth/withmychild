@@ -9,9 +9,9 @@ module Api
 
     # placeの一覧をjson形式で返す
     def create
-      service = Search::PlaceService.new(search_params)
+      service = Search::PlaceService.new(params)
+      service.call
       @places = service.result_record
-      render json: @places
     end
 
     private
