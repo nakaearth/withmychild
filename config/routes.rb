@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :api do
     post "/graphql", to: "graphql#execute"
 
-    resources :places do
+    resources :places, only: [:create] do
       resources :photos
     end
   end
