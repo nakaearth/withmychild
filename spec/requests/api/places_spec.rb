@@ -5,11 +5,13 @@ require 'rails_helper'
 describe Api::PlacesController, broken: true do
   describe 'POST /api/places' do
     let(:user) { create(:user) }
+    let(:app_token) { create(:app_token) }
     let(:cafe) { create(:place, :cafe, user: user) }
     let(:park) { create(:place, :park, user: user) }
     let(:restaurant) { create(:place, :restaurant, user: user) }
 
     before do
+      app_token
       cafe
       park
       restaurant
@@ -25,18 +27,20 @@ describe Api::PlacesController, broken: true do
       let(:params) do
         {
           keyword: 'テスト',
-          uid: "11111111#{user.uid}"
+          secreate_key: "11111111#{app_token.secreat_key}"
         }
       end
 
-      it { expect(response.status).to eq 404 }
+      it { expect(response.status).to eq 400 }
     end
 
     context 'キーワード検索' do
       let(:params) do
         {
           keyword: 'テスト',
-          uid: user.uid
+          secreat_key: app_token.secreat_key,
+          application_id: app_token.application_id,
+          version_id: app_token.version_id
         }
       end
       let(:expected_json) do
