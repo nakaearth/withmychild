@@ -1,10 +1,10 @@
 create_table "places", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
-  t.string   "name",        limit: 40, null: false
-  t.text     "description", limit: 1000
-  t.string   "type",        limit: 20, null: false
-  t.string   "address",     limit: 80, null: false
-  t.float    "latitude",               null: false
-  t.float    "longitude",              null: false
+  t.string   "name",        limit: 40,   null: false
+  t.string   "description", limit: 1000, null: false
+  t.string   "type",        limit: 20,   null: false
+  t.string   "address",     limit: 80,   null: false
+  t.float    "latitude",                 null: false
+  t.float    "longitude",                null: false
   t.string   "tel",         limit: 11
   t.integer  "user_id",     limit: 4,  default: 0, null: false
   t.integer  "likes",       limit: 4,  default: 0, null: false

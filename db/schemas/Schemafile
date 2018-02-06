@@ -1,3 +1,4 @@
+require 'app_tokens.schema'
 require 'photos.schema'
 require 'tags.schema'
 require 'places.schema'

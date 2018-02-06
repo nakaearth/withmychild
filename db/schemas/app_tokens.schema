@@ -1,0 +1,5 @@
+create_table "app_tokens", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
+  t.string "secreat_key", limit: 80,    null: false
+  t.string "application_id", limit: 30, null: false
+  t.string "version_id",     limit: 10, null: false, default: '1.0'
+end
