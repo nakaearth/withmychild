@@ -23,6 +23,17 @@ docker-compose run app bundle exec rake ridgepole:apply
 open "http://localhost:3000"
 ```
 
+## アプリのToken発行
+アプリのtoken発行用にrakeタスクを用意した
+
+```
+bundle exec rake 'app:create_token[application_id, 1.0.0]'
+tokenを発行完了しました: bwbmKXlM+iFyaiGNlV7TvmXN8Us=
+```
+
+tokenが発行されるので、アプリからのアクセス時にそれを使う
+
+
 ## Debug
 
 open a terminal app:

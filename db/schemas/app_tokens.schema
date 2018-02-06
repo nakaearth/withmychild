@@ -3,3 +3,5 @@ create_table "app_tokens", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=
   t.string "application_id", limit: 30, null: false
   t.string "version_id",     limit: 10, null: false, default: '1.0'
 end
+
+add_index :app_tokens, [:application_id, :version_id, :secreat_key], name: 'index_app_tokens_01', unique: true
