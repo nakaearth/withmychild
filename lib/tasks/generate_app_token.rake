@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :app do
-  desc "generate application token. 実行方法: rake 'create_token[application_id, version_id]'"
+  desc "generate application token. 実行方法: rake 'app:create_token[application_id, version_id]'"
   task :create_token, [:application_id, :version_id] => :environment do |task, args|
     return if args.count != 2
 
