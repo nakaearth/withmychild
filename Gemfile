@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 # スキーマ管理
 gem 'ridgepole'
+# 初期データの投入
+gem 'seed-fu', '~> 2.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,7 +65,6 @@ group :development do
   # 静的解析
   gem "rubycritic", :require => false
   gem 'pre-commit'
-  gem 'seed-fu', '~> 2.3'
 end
 
 group :test do
