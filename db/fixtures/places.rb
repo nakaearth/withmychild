@@ -30,7 +30,7 @@ end
 Place.seed(:id) do |place|
   place.id = 4
   place.name = '子供の国'
-  place.description: '様々な遊具や遊び場がある遊び場。夏にはプールで泳ぐこともできる'
+  place.description = '様々な遊具や遊び場がある遊び場。夏にはプールで泳ぐこともできる'
   place.type = 'Park'
   place.address = '神奈川県横浜市青葉区奈良町700'
   place.tel = '0459612111'
