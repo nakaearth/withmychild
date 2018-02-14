@@ -87,11 +87,11 @@ module PlaceSearchable
     end
 
     def transfer_to_elasticsearch
-      __elasticsearch__.client.index  index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
+      ElasticsearchClient.client.index  index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      __elasticsearch__.client.delete index: Settings.elasticsearch[:index_name], type: 'place', id: id
+      ElasticsearchClient.client.delete index: Settings.elasticsearch[:index_name], type: 'place', id: id
     end
   end
 
