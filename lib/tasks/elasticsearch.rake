@@ -8,4 +8,10 @@ namespace :elasticsearch do
     Place.create_alias!
     Place.bulk_import
   end
+
+  desc 'elasticsearch status'
+  task :status do
+    ENV['RAILS_ENV'] ||= "development"
+    ElasticsearchClient.client.indices.status index: Settings.elasticsearch[:index_name]
+  end
 end

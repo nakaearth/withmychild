@@ -62,6 +62,8 @@ module PlaceSearchable
           indexes :id,          type: 'integer', index: 'not_analyzed'
           indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
           indexes :type,        type: 'text', analyzer: 'kuromoji_analyzer'
+          indexes :latitude,    type: 'float', index: 'not_analyzed'
+          indexes :longitude,   type: 'float', index: 'not_analyzed'
           indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
           indexes :user_id,     type: 'integer', index: 'not_analyzed'
           indexes :likes,       type: 'integer', index: 'not_analyzed'
@@ -87,7 +89,7 @@ module PlaceSearchable
     end
 
     def transfer_to_elasticsearch
-      ElasticsearchClient.client.index  index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
+      ElasticsearchClient.client.index index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
