@@ -28,7 +28,6 @@ module Search
     # TODO: GEO関数を使うように後々変更する
     def query
       {
-        min_score: 0.5,
         query: {
           function_score: {
             score_mode: 'sum', # functionsないのスコアの計算方法
