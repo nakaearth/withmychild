@@ -37,8 +37,6 @@ class ElasticsearchClient
     end
 
     def connection_to_bonsai
-      require 'faraday_middleware/aws_signers_v4'
-
       Elasticsearch::Client.new(
         url: url,
         randomize_hosts: true,

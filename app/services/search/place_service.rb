@@ -7,8 +7,9 @@ module Search
     end
 
     def call
-      @client.index_name = Settings.elasticsearch[:index_name]
-      @response = @client.search(query)
+      Place.__elasticsearch__.client = ElasticsearchClient.client
+      Place.__elasticsearch__.index_name = Settings.elasticsearch[:index_name]
+      @response = Place.search(query)
     end
 
     def result_record
