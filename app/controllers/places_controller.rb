@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
   include UserAgent
   include DecryptedId
 
+  skip_before_action :login?
   # before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
   before_action :set_search_form, only: %i[create]
