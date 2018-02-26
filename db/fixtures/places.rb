@@ -36,3 +36,23 @@ Place.seed(:id) do |place|
   place.tel = '0459612111'
   place.user_id = 1
 end
+
+Place.seed(:id) do |place|
+  place.id = 5
+  place.name = '玄海田公園'
+  place.description = 'バーベキュー場もあり、他にもサッカー場、テニス、スケートボード場、遊具などある大きな公園。'
+  place.type = 'Park'
+  place.address = '神奈川県横浜市緑区長津田みなみ台3-1'
+  place.tel = '0453225822'
+  place.user_id = 1
+end
+
+Place.seed(:id) do |place|
+  place.id = 6
+  place.name = 'ボーネルンドあそびのせかい たまプラーザテラス店'
+  place.description = 'たまプラーザ駅に直結した子供の遊び場が沢山あるお店。ボールの海やトランポリン、おままごとやブロック遊びなど子供が遊べる物が沢山。'
+  place.type = 'Park'
+  place.address = '神奈川県横浜市青葉区美しが丘1-1-2 たまプラーザテラス内1F'
+  place.tel = '0454824801'
+  place.user_id = 1
+end
