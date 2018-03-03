@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Place.seed(:id) do |place|
   place.id = 1
   place.name = '桜台公園'
@@ -34,5 +36,45 @@ Place.seed(:id) do |place|
   place.type = 'Park'
   place.address = '神奈川県横浜市青葉区奈良町700'
   place.tel = '0459612111'
+  place.user_id = 1
+end
+
+Place.seed(:id) do |place|
+  place.id = 5
+  place.name = '玄海田公園'
+  place.description = 'バーベキュー場もあり、他にもサッカー場、テニス、スケートボード場、遊具などある大きな公園。'
+  place.type = 'Park'
+  place.address = '神奈川県横浜市緑区長津田みなみ台3-1'
+  place.tel = '0453225822'
+  place.user_id = 1
+end
+
+Place.seed(:id) do |place|
+  place.id = 6
+  place.name = 'ボーネルンドあそびのせかい たまプラーザテラス店'
+  place.description = 'たまプラーザ駅に直結した子供の遊び場が沢山あるお店。ボールの海やトランポリン、おままごとやブロック遊びなど子供が遊べる物が沢山。'
+  place.type = 'Park'
+  place.address = '神奈川県横浜市青葉区美しが丘1-1-2 たまプラーザテラス内1F'
+  place.tel = '0454824801'
+  place.user_id = 1
+end
+
+Place.seed(:id) do |place|
+  place.id = 7
+  place.name = 'クラブ遊キッズ ノースポートモール'
+  place.description = '室内に比較的大きな施設があるkどもの遊び場。子供料金：一般60分/1,000円会員時間無制限/700円、大人料金：無料'
+  place.type = 'Park'
+  place.address = '神奈川県横浜市都筑区中川中央1-25'
+  place.tel = '0454796133'
+  place.user_id = 1
+end
+
+Place.seed(:id) do |place|
+  place.id = 8
+  place.name = 'ディノキッズ ららぽーと横浜店'
+  place.description = 'ららぽーと横浜にある中に遊具があるレストラン。子供を遊ばせながら、ゆっくり食事ができるレストラン'
+  place.type = 'Restaurant'
+  place.address = '神奈川県横浜市都筑区池辺町4035-1 ららぽーと横浜 3F'
+  place.tel = '0454141944'
   place.user_id = 1
 end

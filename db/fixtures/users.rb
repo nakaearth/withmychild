@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 User.seed(:id) do |user|
   user.id = 1
   user.email = 'withmychild-admin@tgmail.com'
