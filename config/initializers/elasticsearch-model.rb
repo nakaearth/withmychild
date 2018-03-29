@@ -1,4 +1,4 @@
-# elasticsearchの設定ファイルを読み込む
+#elasticsearchの設定ファイルを読み込む
 module ElasticsearchConfig
   CONFIG ||= YAML.load_file("#{Rails.root}/config/elasticsearch.yml")[ENV['RAILS_ENV'] || 'development'].with_indifferent_access
 end
@@ -16,7 +16,7 @@ class ElasticsearchClient
     private
 
     def hosts
-     [{ host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }]
+      [{ host: ElasticsearchConfig::CONFIG[:host], port: ElasticsearchConfig::CONFIG[:port] }]
     end
 
     def url
