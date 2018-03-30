@@ -123,10 +123,10 @@ module PlaceSearchable
     end
 
     def bulk_import
-      es = __elasticsearch__
+      client = ElasticsearchClient.client
 
       find_in_batches.with_index do |entries, _i|
-        es.client.bulk(
+        client.bulk(
           index: Settings.elasticsearch[:index_name],
           type: 'place',
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
