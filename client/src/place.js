@@ -24,13 +24,26 @@ class PlaceList extends Component {
       )
   }
 
+  componentWillMount() {
+    this.loadEmployeeList();
+  }
+
   render() {
+    const place_list = this.state.places.map((place) =>
+      <div class='place_div'>
+        <span>
+          <img src={place.thumb_url} />
+          {place.description} <br/>
+          投稿日付 #{place.created_at}
+          <Link to={'/places/${place.encrypted_id}'} ><button>詳細</button></Link>
+        </span>
+      </div>
+    );
+
     return (
-      <ul>
-        {this.props.items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+    {place_list}
     );
   }
 }
+
+module.exports = PlaceList;
