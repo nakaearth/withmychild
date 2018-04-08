@@ -146,3 +146,5 @@ gem 'weak_parameters'
 gem 'graphql'
 
 gem 'graphiql-rails', group: :development
+# Google Places API
+gem 'google_places'
