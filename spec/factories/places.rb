@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-include ActionDispatch::TestProcess
-
 FactoryBot.define do
   factory :place do
     # NOTE: 緯度経度 => lat: 35.55, lon: 139.53
