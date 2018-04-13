@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # スキーマ管理
-gem 'ridgepole'
+gem 'ridgepole', '0.7.2.beta'
 # 初期データの投入
 gem 'seed-fu', '~> 2.3'
 

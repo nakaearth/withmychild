@@ -1,16 +1,17 @@
-create_table "users", force: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC" do |t|
-  t.string   "name",               limit: 60
-  t.string   "email",              limit: 80,  null: false
-  t.string   "decrypted_password", limit: 255
-  t.string   "provider",           limit: 60,  null: false
-  t.string   "nickname",           limit: 255
-  t.string   "uid",                limit: 255, null: false
-  t.string   "image_url",          limit: 255, null: false
-  t.string   "access_token",       limit: 255
-  t.string   "secret_token",       limit: 255
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.string "name", limit: 60
+  t.string "email", limit: 80, null: false
+  t.string "decrypted_password"
+  t.string "provider", limit: 60, null: false
+  t.string "nickname"
+  t.string "uid", null: false
+  t.string "image_url", null: false
+  t.string "access_token"
+  t.string "secret_token"
   t.datetime "created_at"
   t.datetime "updated_at"
+  t.index ["provider", "email"], name: "index_users_on_provider_and_email"
+  t.index ["provider", "uid"], name: "index_users_on_provider_and_uid"
 end
-
-add_index "users", ["provider", "email"], name: "index_users_on_provider_and_email", using: :btree
-add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", using: :btree
