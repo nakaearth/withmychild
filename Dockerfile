@@ -10,4 +10,3 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
   apt-get install nodejs
 RUN npm install -D webpack babel-loader babel-preset-env babel-preset-react
 RUN npm install -S react react-dom
-CMD ["bundle", "exec", "foreman", "start", "-f", "Procfile.development"]
