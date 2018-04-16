@@ -46,4 +46,7 @@ class PlaceList extends Component {
   }
 }
 
-module.exports = PlaceList;
+ReactDOM.render(
+  <PlaceList />,
+  document.getElementById('placeList')
+);

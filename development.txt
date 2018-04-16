@@ -1,0 +1,5 @@
+# mysqlへの接続
+
+```
+mysql -h 127.0.0.1 -p withmychild_development -u root -p
+```
