@@ -28,12 +28,12 @@ services:
     volumes:
       - .:/withmychild
     working_dir: "/withmychild"
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec foreman start"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     links:
       - db
       - elasticsearch
     ports:
-      - "5000:5000"
+      - "3000:3000"
     stdin_open: true
     tty: true
 volumes:
