@@ -12,9 +12,11 @@ class Place < ApplicationRecord
   belongs_to :user
   has_many :photos, inverse_of: :place
   has_many :tags, inverse_of: :place
+  has_many :featured_images, inverse_of: :place
 
   accepts_nested_attributes_for :photos
   accepts_nested_attributes_for :tags
+  accepts_nested_attributes_for :featured_images
 
   validates :description, length: { maximum: 1000 }
   validates :address, length: { maximum: 80 }

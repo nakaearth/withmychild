@@ -14,10 +14,9 @@ namespace :app do
 
     center = centers.first
 
-
     place_set = []
-    image_set = []
-    place_id = 1
+    featured_image_set = []
+    place_id = Place.all.length + 1
 
     types.each do |type|
       spots = client.spots(center.lat, center.lng, radius: radius, types: type, language: 'ja')
@@ -27,7 +26,7 @@ namespace :app do
           id: place_id,
           name: place.name,
           description: place.reviews[0]&.text,
-          type: type,
+          type: type.capitalize,
           address: place.formatted_address,
           latitude: place.lat,
           longitude: place.lng,
@@ -38,24 +37,22 @@ namespace :app do
 
         if place.photos.length > 0
           data = {
-            image: place.photos[0]&.fetch_url(800),
+            url: place.photos[0]&.fetch_url(800),
             place_id: place_id,
           }
-          image_set << data
+          featured_image_set << data
         end
 
         place_id += 1
       end
     end
 
-    p place_set
-
     SeedFu::Writer.write(Rails.root.join('db', 'fixtures', 'places.rb').to_s, class_name: 'Place') do |writer|
       writer.add(place_set)
     end
 
-    SeedFu::Writer.write(Rails.root.join('db', 'fixtures', 'images.rb').to_s, class_name: 'Photo') do |writer|
-      writer.add(image_set)
+    SeedFu::Writer.write(Rails.root.join('db', 'fixtures', 'featured_images.rb').to_s, class_name: 'FeaturedImage') do |writer|
+      writer.add(featured_image_set)
     end
   end
 end
