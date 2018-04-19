@@ -1,6 +1,12 @@
+const path = require('path');
+const webpack = require('webpack');
+
 module.exports = {
+  mode: 'development',
   entry: {
-    app: './client/src/index.js',
+    index: [
+      path.resolve(__dirname, './client/src/index.js')
+    ]
   },
 
   output: {
@@ -9,8 +15,9 @@ module.exports = {
   },
 
   module: {
-    loaders: [
-      { test: /\.(js|jsx)$/,
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
         loader: "babel-loader",
         exclude: /node_modules/,
         query: {
@@ -19,4 +26,7 @@ module.exports = {
       },
     ]
   },
-}
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
