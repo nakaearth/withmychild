@@ -28,7 +28,7 @@ services:
     volumes:
       - .:/withmychild
     working_dir: "/withmychild"
-    command: bundle exec foreman start -f Procfile.development
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec foreman start -f Procfile.development"
     links:
       - db
       - elasticsearch
