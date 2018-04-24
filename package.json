@@ -23,7 +23,7 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "react": "^15.6.2",
+    "react": "^16.3.2",
     "react-dom": "^15.6.2",
     "stylint": "^1.5.9"
   },
