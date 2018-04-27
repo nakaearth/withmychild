@@ -2,15 +2,16 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  watch: true,
   mode: 'development',
   entry: {
-    index: [
+    'index': [
       path.resolve(__dirname, './client/src/index.js')
     ]
   },
 
   output: {
-    path: __dirname + '/app/assets/javascripts/webpack/',
+    path: path.resolve(__dirname, '/app/assets/javascripts/webpack/'),
     filename: '[name].js',
   },
 
