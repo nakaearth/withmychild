@@ -4,12 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   watch: true,
   mode: 'development',
-  entry: {
-    'index': [
-      path.resolve(__dirname, './client/src/index.js')
-    ]
-  },
-
+  entry: path.resolve(__dirname, '/client/src/index.js'),
   output: {
     path: path.resolve(__dirname, '/app/assets/javascripts/webpack/'),
     filename: '[name].js',
