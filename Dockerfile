@@ -4,6 +4,7 @@ WORKDIR /tmp
 ADD ./Gemfile Gemfile
 ADD ./Gemfile.lock Gemfile.lock
 ADD ./Procfile.development Procfile.development
+ADD ./Procfile Procfile
 ADD ./webpack.config.js webpack.config.js
 ADD ./node_modules node_modules
 RUN bundle install
