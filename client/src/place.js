@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
 
-class PlaceList extends Component {
+export class PlaceList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      employees: [],
+      places: []
     };
-
-    this.loadPlaceList = this.loadAjax.bind(this);
   }
 
   loadPlaceList() {
@@ -24,8 +22,8 @@ class PlaceList extends Component {
       )
   }
 
-  componentWillMount() {
-    this.loadEmployeeList();
+  componentDidMount() {
+    this.loadPlaceList();
   }
 
   render() {
@@ -45,8 +43,3 @@ class PlaceList extends Component {
     );
   }
 }
-
-ReactDOM.render(
-  <PlaceList />,
-  document.getElementByClassName('placeList')
-);
