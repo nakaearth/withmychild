@@ -5,4 +5,4 @@ task :build_frontend do
   sh "npm run build"
 end
 
-Rake::Task["assets:precompile"].enhance(%i[build_frontend])
+Rake::Task["assets:precompile"].enhance(%i[build_frontend]) if Rails.env.production?
