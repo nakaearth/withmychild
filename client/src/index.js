@@ -1,4 +1,3 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-
-console.log('Hello');
+import { PlaceList } from './place.js'
