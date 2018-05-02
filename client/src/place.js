@@ -20,7 +20,7 @@ class PlaceList extends Component {
         })
       )
       .catch((error) =>
-        console.error(error);
+        console.error(error)
       )
   }
 
@@ -41,12 +41,12 @@ class PlaceList extends Component {
     );
 
     return (
-    {place_list}
+    { place_list }
     );
   }
 }
 
 ReactDOM.render(
   <PlaceList />,
-  document.getElementById('placeList')
+  document.getElementByClassName('placeList')
 );
