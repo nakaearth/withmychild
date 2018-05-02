@@ -26,9 +26,22 @@ services:
       DB_SERVERNAME: "db"
       ELASTICSEARCH_HOST: "elasticsearch"
     volumes:
-      - .:/withmychild
+      - ./app:/app/app
+      - ./bin:/app/bin
+      - ./config:/app/config
+      - ./config.ru:/app/config.ru
+      - ./db:/app/db
+      - ./Gemfile:/app/Gemfile
+      - ./Gemfile.lock:/app/Gemfile.lock
+      - ./Guardfile:/app/Guardfile
+      - ./lib:/app/lib
+      - ./public:/app/public
+      - ./Rakefile:/app/Rakefile
+      - ./spec:/app/spec
+      - ./.rubocop.yml:/app/.rubocop.yml
+      - ./log:/app/log
     working_dir: "/withmychild"
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec foreman start -f Procfile.development"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
     links:
       - db
       - elasticsearch
