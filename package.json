@@ -5,7 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build:dev": "webpack --mode development",
+    "build:prd": "webpack --mode production",
+    "start": "webpack-dev-server --mode development"
   },
   "keywords": [],
   "author": "",
@@ -19,8 +21,8 @@
     "jest": "^20.0.4",
     "stylelint": "^8.4.0",
     "stylelint-config-standard": "^18.0.0",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.14"
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.2"
   },
   "dependencies": {
     "react": "^16.3.2",
