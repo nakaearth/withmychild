@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
-import { PlaceList } from './place.js'
+import ReactDOM from 'react-dom'
+import { PlaceList } from './placeList'
 
-render(
-  <PlaceList />,
-  document.getElementById('placeList')
-);
+const wraper = document.getElementById('placeList');
+console.log(wraper);
+wraper ? ReactDOM.render(<PlaceList />, wraper) : false;
+

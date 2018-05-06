@@ -3,22 +3,23 @@ const webpack = require('webpack');
 
 module.exports = {
   watch: true,
-  mode: 'development',
   entry: path.resolve(__dirname, 'client/src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'app/assets/javascripts/webpack/'),
+    path: path.resolve(__dirname, 'app/assets/javascripts/webpack'),
     filename: '[name].js',
   },
-
+  devServer: {
+    contentBase: path.resolve(__dirname, 'app/assets/javascripts/webpack'),
+    host: '0.0.0.0',
+    port: '8080',
+    open: true,
+  },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js(x)$/,
         loader: "babel-loader",
         exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "react"],
-        }
       },
     ]
   },
