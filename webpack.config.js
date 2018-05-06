@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   watch: true,
@@ -8,17 +7,18 @@ module.exports = {
     path: path.resolve(__dirname, 'app/assets/javascripts/webpack'),
     filename: '[name].js',
   },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'app/assets/javascripts/webpack'),
-    host: '0.0.0.0',
-    port: '8080',
-    open: true,
-  },
   module: {
     rules: [
       {
         test: /\.js(x)$/,
-        loader: "babel-loader",
+        use: [
+          {
+             loader: "babel-loader",
+             options: {
+               presets: ['env', 'react']
+             }
+          }
+        ],
         exclude: /node_modules/,
       },
     ]
