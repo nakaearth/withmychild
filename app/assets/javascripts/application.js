@@ -14,5 +14,3 @@
 //= require turbolinks
 //= require myscript
 //= require bootstrap.min
-//= webpack/main
-//= require_tree .

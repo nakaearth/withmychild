@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 
 export class PlaceList extends React.Component {
   constructor(props) {
-    console.log('テスト');
     super(props);
+    console.log('テスト');
     this.state = { places: [] };
   }
 
@@ -22,17 +22,11 @@ export class PlaceList extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.loadPlaceList();
   }
 
   render() {
-    return(
-      <div class='place_div'>
-        ほげ
-      </div>
-    );
+    return("<div>ほげ</div>");
   }
 }
-
-export default PlaceList;
