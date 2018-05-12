@@ -4,22 +4,15 @@ module.exports = {
   watch: true,
   entry: path.resolve(__dirname, 'client/src/index.js'),
   output: {
-    path: path.resolve(__dirname, 'app/assets/javascripts/webpack'),
+    path: path.resolve(__dirname, 'app/assets/javascripts/webpack/'),
     filename: '[name].js',
   },
   module: {
     rules: [
       {
-        test: /\.js(x)$/,
-        use: [
-          {
-             loader: "babel-loader",
-             options: {
-               presets: ['env', 'react']
-             }
-          }
-        ],
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
+        use: ["babel-loader"],
       },
     ]
   },
