@@ -15,6 +15,7 @@ docker-compose build
 docker-compose up
 docker-compose run app bundle exec rake db:setup
 docker-compose run app bundle exec rake ridgepole:apply
+docker-compose run app npm run build:dev &
 ```
 
 以下のコマンドでアプリケーションにアクセス
