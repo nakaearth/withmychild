@@ -570,7 +570,7 @@ DEPENDENCIES
   pry-byebug
   pry-doc
   pry-rails
-  puma (~> 3.7)
+  puma (~> 3.11)
   rails (~> 5.2)
   rails_best_practices
   rake_shared_context
