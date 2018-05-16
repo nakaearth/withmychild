@@ -1,3 +1,2 @@
 # Procfile
-web: bundle exec rails server
-webpack: npm run webpack-watch
+web: bundle exec rails server -p 3000

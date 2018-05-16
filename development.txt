@@ -1,0 +1,10 @@
+# mysqlへの接続
+
+```
+mysql -h 127.0.0.1 -p withmychild_development -u root -p
+```
+
+# ナレッジ
+Error: EACCES: permission denied, mkdir '/app'
+が出たのでwebpack.config.jsの中の「/」を削除
+

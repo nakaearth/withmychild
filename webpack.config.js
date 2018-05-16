@@ -1,22 +1,22 @@
-module.exports = {
-  entry: {
-    app: './client/src/index.js',
-  },
+const path = require('path');
 
+module.exports = {
+  watch: true,
+  entry: path.resolve(__dirname, 'client/src/index.js'),
   output: {
-    path: __dirname + '/app/assets/javascripts/webpack/',
+    path: path.resolve(__dirname, 'app/assets/javascripts/webpack/'),
     filename: '[name].js',
   },
-
   module: {
-    loaders: [
-      { test: /\.(js|jsx)$/,
-        loader: "babel-loader",
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        query: {
-          presets: ["es2015", "react"],
-        }
+        use: ["babel-loader"],
       },
     ]
   },
-}
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+};
