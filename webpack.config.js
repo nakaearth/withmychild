@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  watch: true,
   entry: path.resolve(__dirname, 'client/src/index.js'),
   output: {
     path: path.resolve(__dirname, 'app/assets/javascripts/webpack/'),
