@@ -111,7 +111,7 @@ GEM
       term-ansicolor
       thor
     crass (1.0.4)
-    database_cleaner (1.6.2)
+    database_cleaner (1.7.0)
     deep_merge (1.2.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
