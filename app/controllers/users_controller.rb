@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user_search, only: %i[index show destroy]
+  skip_before_action :login?, only: %i[new]
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
@@ -12,11 +12,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
-    respond_to do |format|
-      format.html { render partial: 'modals/users/form' }
-      format.js { render partial: 'new' }
-    end
   end
 
   def create
@@ -37,10 +32,6 @@ class UsersController < ApplicationController
   def destroy; end
 
   private
-
-  def set_user_search
-    @user_search = UserSearch.new
-  end
 
   def set_user
     @user = User.find(Base64.decode64(params[:id]))
