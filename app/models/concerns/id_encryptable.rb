@@ -14,7 +14,8 @@ module IdEncryptable
     end
   end
 
- # encrypted_hoge_idメソッドを動的に生成する
+  # インスタンスメソッド
+  # encrypted_hoge_idメソッドを動的に生成する
   def method_missing(method_name, *args, &block)
     if method_name =~ /\Aencrypted_(.+)_id\z/
       association_name = Regexp.last_match(1)
@@ -48,7 +49,6 @@ module IdEncryptable
     method_name.to_s.start_with?('decrypted') || super
   end
 
-  # インスタンスメソッド
   def encrypted_id
     Base64.encode64(id.to_s)
   end
