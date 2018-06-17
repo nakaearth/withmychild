@@ -9,7 +9,7 @@
   .navbar-left.menustyle
   - unless current_user
     .navbar-right.menustyle
-      = link_to 'ログイン', new_user_path, remote: true, data: { toggle: "modal",  target: '#login_modal', backdrop: false }
+      = link_to 'ログイン', new_user_path
   - else current_user
     .navbar-right.menustyle
       = link_to_unless_current  image_tag(current_user.image_url, size: '40x40'), user_path(id: current_user.id)
