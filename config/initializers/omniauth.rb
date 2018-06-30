@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :developer unless Rails.env.production?
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-  provider :twitter, ENV["TWITTER_FAMIPHOTOS_API_TOKEN"], ENV["TWITTER_FAMIPHOTOS_SECRET_TOKEN"]
+  provider :twitter, ENV["TWITTER_API_TOKEN"], ENV["TWITTER_SECRET_TOKEN"]
   provider :google_oauth2, ENV["GOOGLE_APP_ID"], ENV["GOOGLE_APP_SECRET"],
     {
       scope: 'email',
