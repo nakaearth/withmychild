@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "npm": "^6.0.1",
-    "react": "^16.3.2",
+    "react": "^16.4.1",
     "react-dom": "^16.3.2",
     "stylint": "^1.5.9"
   },
