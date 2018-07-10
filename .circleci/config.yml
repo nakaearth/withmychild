@@ -4,7 +4,7 @@ jobs:
     parallelism: 3
     working_directory: ~/withmychild
     docker:
-      - image: circleci/ruby:2.4.4-node
+      - image: circleci/ruby:2.5.1-node
         environment:
           RAILS_ENV: 'test'
           RACK_ENV: 'test'
