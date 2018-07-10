@@ -3,5 +3,6 @@
 require 'app_tokens.schema'
 require 'photos.schema'
 require 'places.schema'
+require 'place_comments.schema'
 require 'tags.schema'
 require 'users.schema'
