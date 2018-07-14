@@ -18,4 +18,3 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 RUN npm install webpack webpack-cli --save-dev --no-optional
 RUN npm install --save react react-dom  --no-optional
 RUN npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react --no-optional
-RUN npm install --save-dev babel-preset-stage-2
