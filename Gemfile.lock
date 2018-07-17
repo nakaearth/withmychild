@@ -193,7 +193,7 @@ GEM
     geocoder (1.4.9)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    graphiql-rails (1.4.10)
+    graphiql-rails (1.4.11)
       railties
       sprockets-rails
     graphql (1.8.5)
@@ -283,7 +283,7 @@ GEM
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (2.3.0)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
