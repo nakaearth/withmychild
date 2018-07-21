@@ -16,7 +16,7 @@ development:
 test:
   <<: *default
   database: withmychild_test
-  host: 127.0.0.1
+  host: <%= ENV['DB_SERVERNAME'] || '127.0.0.1' %>
   port: 3306
 
 production:
