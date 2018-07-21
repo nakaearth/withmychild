@@ -13,7 +13,7 @@ ADD ./node_modules node_modules
 ADD ./node_modules node_modules
 ADD ./.babelrc .babelrc
 RUN bundle install
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install nodejs
 RUN npm install webpack webpack-cli --save-dev --no-optional
 RUN npm install --save react react-dom  --no-optional

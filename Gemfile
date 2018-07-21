@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # スキーマ管理
-gem 'ridgepole', '0.7.2'
+gem 'ridgepole', '0.7.3'
 # 初期データの投入
 gem 'seed-fu', '~> 2.3'
 
@@ -42,7 +42,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 3.3'
+  gem 'capybara', '~> 3.4'
   gem 'selenium-webdriver'
   # コーディング規約チェック
   gem 'rubocop'
@@ -148,3 +148,6 @@ gem 'weak_parameters'
 gem 'graphql'
 
 gem 'graphiql-rails', group: :development
+
+# ドキュメント生成
+gem 'yard'
