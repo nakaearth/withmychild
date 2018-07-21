@@ -609,6 +609,7 @@ DEPENDENCIES
   weak_parameters
   web-console (>= 3.3.0)
   whenever
+  yard
 
 RUBY VERSION
    ruby 2.5.1p57
