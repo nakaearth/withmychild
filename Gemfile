@@ -148,3 +148,6 @@ gem 'weak_parameters'
 gem 'graphql'
 
 gem 'graphiql-rails', group: :development
+
+# ドキュメント生成
+gem 'yard'
