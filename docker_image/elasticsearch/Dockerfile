@@ -1,7 +1,6 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch:6.0.0
+FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
 
 RUN elasticsearch-plugin install analysis-kuromoji
 RUN elasticsearch-plugin install analysis-icu
-RUN elasticsearch-plugin remove x-pack
 
-COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+COPY --chown=elasticsearch:elasticsearch  elasticsearch.yml /usr/share/elasticsearch/config/l
