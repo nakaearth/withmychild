@@ -26,7 +26,7 @@ module Search
 
     private
 
-    # TODO: GEO関数を使うように後々変更する
+    # rubocop:disable Style/TrailingCommaInHashLiteral
     def query
       search_query = {
         query: {
@@ -81,5 +81,6 @@ module Search
 
       search_query.to_json
     end
+    # rubocop:enable Style/TrailingCommaInHashLiteral
   end
 end
