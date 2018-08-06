@@ -28,7 +28,7 @@ module Search
 
     # TODO: GEO関数を使うように後々変更する
     def query
-      {
+      search_query = {
         query: {
           function_score: {
             score_mode: 'sum', # functionsないのスコアの計算方法
@@ -36,14 +36,13 @@ module Search
             query: {
               bool: {
                 must: Search::Query::FunctionQuery.new(@conditions, ['description']).and_query,
-                filter: Search::Query::GeoLocationQuery.new(@conditions).geo_query
               }
             },
             functions: [
               {
                 field_value_factor: {
                   field: "likes",
-                  factor: 2.0,
+                  factor: 2,
                   modifier: "square",
                   missing: 1
                 },
@@ -73,7 +72,14 @@ module Search
         from: @conditions[:page] || 0,
         size: 20,
         sort: { id: { order: 'desc' } }
-      }.to_json
+      }
+
+      if @conditions[:location]
+        search_query[:query][:function_score][:query][:bool][:filter] =
+          Search::Query::GeoLocationQuery.new(@conditions).geo_query
+      end
+
+      search_query.to_json
     end
   end
 end
