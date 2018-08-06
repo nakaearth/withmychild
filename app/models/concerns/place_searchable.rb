@@ -60,17 +60,14 @@ module PlaceSearchable
       mapping _source: { enabled: true } do
         indexes :id,          type: 'integer'
         indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :type,        type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :type,        type: 'keyword'
         indexes :latitude,    type: 'float'
         indexes :longitude,   type: 'float'
         indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
         indexes :user_id,     type: 'integer'
         indexes :likes,       type: 'integer'
         indexes :address,     type: 'text', analyzer: 'kuromoji_analyzer'
-        indexes :location,    type: 'geo_point' do
-          indexes :lat,       type: 'geo_point'
-          indexes :lon,       type: 'geo_point'
-        end
+        indexes :location,    type: 'geo_point'
         indexes :tags,        type: 'nested' do
           indexes :name,      type: 'keyword'
         end
