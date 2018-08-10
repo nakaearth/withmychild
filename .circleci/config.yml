@@ -1,7 +1,6 @@
 version: 2
 jobs:
   build:
-    parallelism: 3
     working_directory: ~/withmychild
     docker:
       - image: circleci/ruby:2.5.1-node
@@ -13,13 +12,12 @@ jobs:
            - MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
            - MYSQL_ROOT_HOST: '%'
            - MYSQL_ROOT_PASSWORD: ''
-      - image: docker.elastic.co/elasticsearch/elasticsearch:5.6.1
+      - image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
         container_name: elasticsearch
         hostname: elasticsearch
         environment:
           - "http.host=0.0.0.0"
           - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-          - "xpack.security.enabled=false"
         ports:
           - 9200:9200
     steps:
@@ -45,6 +43,7 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: bundle exec rubocop app
       - run: bundle exec rubocop spec
+
       - store_test_results:
           path: test_results
       - run: bash .circleci/setup-heroku.sh

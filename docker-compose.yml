@@ -17,7 +17,6 @@ services:
     environment:
       - "http.host=0.0.0.0"
       - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-      - "xpack.security.enabled=false"
     ports:
       - 9200:9200
   app:

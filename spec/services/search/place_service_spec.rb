@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 describe Search::PlaceService, broken: true do
+# describe Search::PlaceService do
   let(:user) { create(:user) }
   let(:cafe) { create(:place, :cafe, user: user) }
   let(:park) { create(:place, :park, user: user) }
@@ -37,7 +38,7 @@ describe Search::PlaceService, broken: true do
     end
 
     context 'typeを絞り込んで検索' do
-      let(:params) { { keyword: 'テスト', type: 'cafe' } }
+      let(:params) { { keyword: 'テスト', type: 'Cafe' } }
 
       it 'Typeが一致する物のみ検索にヒットする' do
         expect(@service.hits_count.size).to eq 1

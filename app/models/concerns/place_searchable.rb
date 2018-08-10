@@ -57,27 +57,23 @@ module PlaceSearchable
         }
       }
     } do
-      mapping _source: { enabled: true },
-        _all: { enabled: true, analyzer: 'kuromoji_analyzer' } do
-          indexes :id,          type: 'integer', index: 'not_analyzed'
-          indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
-          indexes :type,        type: 'text', analyzer: 'kuromoji_analyzer'
-          indexes :latitude,    type: 'float', index: 'not_analyzed'
-          indexes :longitude,   type: 'float', index: 'not_analyzed'
-          indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
-          indexes :user_id,     type: 'integer', index: 'not_analyzed'
-          indexes :likes,       type: 'integer', index: 'not_analyzed'
-          indexes :address,     type: 'text', analyzer: 'kuromoji_analyzer'
-          indexes :location,    type: 'geo_point' do
-            indexes :lat,       type: 'string', index: 'not_analyzed'
-            indexes :lon,       type: 'string', index: 'not_analyzed'
-          end
-          indexes :tags,        type: 'nested' do
-            indexes :name,      type: 'keyword', index: 'not_analyzed'
-          end
-          indexes :created_at,  type: 'date', format: 'date_time'
-          indexes :updated_at,  type: 'date', format: 'date_time'
+      mapping _source: { enabled: true } do
+        indexes :id,          type: 'integer'
+        indexes :description, type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :type,        type: 'keyword'
+        indexes :latitude,    type: 'float'
+        indexes :longitude,   type: 'float'
+        indexes :tel,         type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :user_id,     type: 'integer'
+        indexes :likes,       type: 'integer'
+        indexes :address,     type: 'text', analyzer: 'kuromoji_analyzer'
+        indexes :location,    type: 'geo_point'
+        indexes :tags,        type: 'nested' do
+          indexes :name,      type: 'keyword'
         end
+        indexes :created_at,  type: 'date', format: 'date_time'
+        indexes :updated_at,  type: 'date', format: 'date_time'
+      end
     end
 
     # TODO: tagsテーブルの値をいれる
