@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/BlockLength  Style/NumericPredicate:
+# rubocop:disable all
 namespace :app do
   desc "generate place data. 実行方法: rake 'generate_place_data:start[name, radius, type]'"
   task :generate_place_data, %w[name radius types] => :environment do |_, args|
@@ -57,4 +57,4 @@ namespace :app do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength  Style/NumericPredicate:
+# rubocop:enable all
