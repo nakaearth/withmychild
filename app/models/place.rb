@@ -10,9 +10,9 @@ class Place < ApplicationRecord
   geocoded_by :address
 
   belongs_to :user
-  has_many :photos, inverse_of: :place
+  has_many :photos, inverse_of: :place, dependent: :delete_all
   has_many :tags, inverse_of: :place
-  has_many :featured_images, inverse_of: :place
+  has_many :featured_images, inverse_of: :place, dependent: :delete_all
 
   accepts_nested_attributes_for :photos
   accepts_nested_attributes_for :tags
