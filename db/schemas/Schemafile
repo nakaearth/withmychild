@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 require 'app_tokens.schema'
+require 'featured_images.schema'
 require 'photos.schema'
 require 'places.schema'
 require 'place_comments.schema'
