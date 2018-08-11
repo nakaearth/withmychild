@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 namespace :app do
   desc "generate place data. 実行方法: rake 'generate_place_data:start[name, radius, type]'"
   task :generate_place_data, %w[name radius types] => :environment do |_, args|
@@ -5,7 +6,7 @@ namespace :app do
 
     radius = 100 if args.radius.blank?
     types = args.types&.include?('|') ? args.types.split('|') : ['park']
-    
+
     puts 'name is required' and next if args.name.blank?
 
     centers = client.spots_by_query(args.name)
@@ -56,3 +57,4 @@ namespace :app do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
