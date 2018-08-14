@@ -31,7 +31,8 @@
   visibility: visible;
   position: absolute;
   margin: 4px;
-  display: inline-block;
+  # display: inline-block;
+  display: table;
 
   @include border-radius(5px);
 
