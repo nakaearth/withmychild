@@ -5,7 +5,7 @@
     .place_div
       span
         = image_tag place.first_image_url(:thumb)
-        | #{place.description}
+        | #{place.description}.[0..19] + '....'
         br/
         | 投稿日付 #{place.created_at.strftime("%Y/%m/%d")}
         br/
