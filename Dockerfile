@@ -9,8 +9,6 @@ ADD ./Procfile Procfile
 ADD ./webpack.config.js webpack.config.js
 ADD ./package.json package.json
 ADD ./package-lock.json package-lock.json
-ADD ./node_modules node_modules
-ADD ./node_modules node_modules
 ADD ./.babelrc .babelrc
 RUN bundle install
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
