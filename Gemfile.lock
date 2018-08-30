@@ -193,7 +193,7 @@ GEM
     geocoder (1.5.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    google_places (1.1.0)
+    google_places (1.2.0)
       httparty (>= 0.13.1)
     graphiql-rails (1.4.11)
       railties
