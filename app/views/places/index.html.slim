@@ -5,8 +5,8 @@
     .place_div
       span
         = image_tag place.first_image_url(:thumb)
-        | #{place.description}.[0..19] + '....'
         br/
+        | #{place.description}.[0..19] + '....'
         | 投稿日付 #{place.created_at.strftime("%Y/%m/%d")}
         br/
       = link_to '詳細', place_path(id: Place.encrypt_id(place.id.to_s))
