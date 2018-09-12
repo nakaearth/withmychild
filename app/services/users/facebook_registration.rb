@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Users
-  class TwitterRegistration
+  class FacebookRegistration
     class << self
       def call(auth)
         ActiveRecord::Base.transaction do
@@ -10,12 +10,11 @@ module Users
             user.email = auth[:info][:email]
             user.provider = auth[:provider]
             user.uid      = auth[:uid]
-            user.nickname = auth[:info][:nickname]
+            user.nickname = auth[:extra][:raw_info][:username]
             user.image_url = auth[:info][:image] || 'no_photo.jpeg'
 
-            unless auth[:credentials].blank?
+            if auth[:credentials].present?
               user.access_token = auth[:credentials][:token]
-              user.secret_token = auth[:credentials][:secret]
             end
           end
 
