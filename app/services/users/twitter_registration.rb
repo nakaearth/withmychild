@@ -13,7 +13,7 @@ module Users
             user.nickname = auth[:info][:nickname]
             user.image_url = auth[:info][:image] || 'no_photo.jpeg'
 
-            unless auth[:credentials].blank?
+            if auth[:credentials].present?
               user.access_token = auth[:credentials][:token]
               user.secret_token = auth[:credentials][:secret]
             end
