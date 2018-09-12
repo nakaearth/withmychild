@@ -1,4 +1,4 @@
-FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
+FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.4.0
 
 RUN elasticsearch-plugin install analysis-kuromoji
 RUN elasticsearch-plugin install analysis-icu

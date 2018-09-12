@@ -3,18 +3,13 @@
 require 'rails_helper'
 
 describe Search::PlaceService, broken: true do
-# describe Search::PlaceService do
   let(:user) { create(:user) }
-  let(:cafe) { create(:place, :cafe, user: user) }
-  let(:park) { create(:place, :park, user: user) }
-  let(:restaurant) { create(:place, :restaurant, user: user) }
+  let!(:cafe) { create(:place, :cafe, user: user) }
+  let!(:park) { create(:place, :park, user: user) }
+  let!(:restaurant) { create(:place, :restaurant, user: user) }
   let(:params) {}
 
   before do
-    cafe
-    park
-    restaurant
-
     Place.create_index!(force: true)
     Place.create_alias!
     Place.bulk_import
