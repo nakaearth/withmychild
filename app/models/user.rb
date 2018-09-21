@@ -20,8 +20,6 @@ class User < ApplicationRecord
         Users::FacebookRegistration.call(auth)
       when 'twitter'
         Users::TwitterRegistration.call(auth)
-      else
-        Users::TwitterRegistration.call(auth)
       end
     end
   end

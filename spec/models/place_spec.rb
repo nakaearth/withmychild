@@ -8,8 +8,8 @@ RSpec.describe Place, type: :model do
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
-      it { expect belong_to(:user) }
-      it { expect have_many(:photos) }
+      it { should belong_to(:user) }
+      it { should have_many(:photos) }
     end
   end
 
