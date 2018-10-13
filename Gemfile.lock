@@ -226,6 +226,8 @@ GEM
     ice_nine (0.11.2)
     inflecto (0.0.2)
     jaro_winkler (1.5.1)
+    jb (0.5.0)
+      multi_json
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -568,6 +570,7 @@ DEPENDENCIES
   guard
   guard-rspec
   guard-rubocop
+  jb
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
