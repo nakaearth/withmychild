@@ -30,17 +30,15 @@
   visibility: visible;
   position: absolute;
   margin: 4px;
-#  display: block;
 
   @include border-radius(5px);
 
   .place_div {
-#    display: table-cell;
     background-color: #fff;
     border: 1px solid #000;
     font-size: 10pt;
     width: 800px;
-    height: 400px;
+    height: 300px;
     margin: 5px;
     padding: 9px;
     box-shadow: 4px 4px;
