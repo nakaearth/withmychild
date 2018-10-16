@@ -10,10 +10,13 @@ class PlacesController < ApplicationController
   before_action :set_search_form, only: %i[create]
 
   def index
-    respond_to do |_format|
-      service = Search::PlaceService.new(search_params)
-      @places = service.result_record
-    end
+    service = Search::PlaceService.new(search_params)
+    service.call
+    @places = service.result_record
+  rescue ActiveRecord::RecordInvalid => e
+    logger.error(error_message: e.message)
+
+    render action: :new, alert: '検索処理に失敗しました'
   end
 
   def show; end
@@ -23,7 +26,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-    service = Search::PlaceService.new(search_params)
+    service = Search::PlaceService.new(keyword_search_params)
     service.call
     @places = service.result_record
   rescue ActiveRecord::RecordInvalid => e
@@ -59,21 +62,16 @@ class PlacesController < ApplicationController
     @search_form = SearchForm.new
   end
 
-  def place_params
-    colums_name = [
-      :description,
-      photo_attributes: [
-        :image
-      ],
-      tags_attributes: [
-        :name
-      ]
+  def search_params
+    permitted_params = [
+      :page,
+      :keyword
     ]
 
-    params.require(:place).permit(colums_name)
+    params..permit(permitted_params)
   end
 
-  def search_params
+  def keyword_search_params
     permitted_params = [
       :keyword
     ]
