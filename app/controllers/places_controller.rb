@@ -63,9 +63,9 @@ class PlacesController < ApplicationController
   end
 
   def search_params
-    permitted_params = [
-      :page,
-      :keyword
+    permitted_params = %i[
+      page
+      keyword
     ]
 
     params..permit(permitted_params)
