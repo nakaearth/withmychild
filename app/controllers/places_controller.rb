@@ -70,7 +70,7 @@ class PlacesController < ApplicationController
       keyword
     ]
 
-    params..permit(permitted_params)
+    params.permit(permitted_params)
   end
 
   def keyword_search_params
