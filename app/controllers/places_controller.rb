@@ -12,6 +12,7 @@ class PlacesController < ApplicationController
   def index
     service = Search::PlaceService.new(search_params)
     service.call
+    @keyword = search_params[:keyword]
     @places = service.result_record
   rescue ActiveRecord::RecordInvalid => e
     logger.error(error_message: e.message)
@@ -28,6 +29,7 @@ class PlacesController < ApplicationController
   def create
     service = Search::PlaceService.new(keyword_search_params)
     service.call
+    @keyword = search_params[:keyword]
     @places = service.result_record
   rescue ActiveRecord::RecordInvalid => e
     # TODO: ここエラーログはログ出力させたいっすね

@@ -1,12 +1,1 @@
-= render 'shared/search_form'
-
-.place_list
-  - @places.each do |place|
-    .place_div
-      span
-        = image_tag place.first_image_url(:thumb)
-        br/
-        | #{place.description}.[0..19] + '....'
-        | 投稿日付 #{place.created_at.strftime("%Y/%m/%d")}
-        br/
-      = link_to '詳細', place_path(id: Place.encrypt_id(place.id.to_s))
+= render 'place_list'
