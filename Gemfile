@@ -126,6 +126,8 @@ gem 'geocoder'
 gem "active_decorator"
 # pagenate
 gem 'kaminari'
+# nokogirri
+gem 'nokogiri'
 # 暗号化
 gem 'attr_encrypted'
 # プロセス管理
