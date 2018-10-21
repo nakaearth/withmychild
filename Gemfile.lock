@@ -147,17 +147,17 @@ GEM
       dry-equalizer (~> 0.2)
       dry-logic (~> 0.4, >= 0.4.0)
       dry-types (~> 0.12.0)
-    elasticsearch (5.0.5)
-      elasticsearch-api (= 5.0.5)
-      elasticsearch-transport (= 5.0.5)
-    elasticsearch-api (5.0.5)
+    elasticsearch (6.1.0)
+      elasticsearch-api (= 6.1.0)
+      elasticsearch-transport (= 6.1.0)
+    elasticsearch-api (6.1.0)
       multi_json
-    elasticsearch-model (5.1.0)
+    elasticsearch-model (6.0.0)
       activesupport (> 3)
-      elasticsearch (~> 5)
+      elasticsearch (> 1)
       hashie
     elasticsearch-rails (6.0.0)
-    elasticsearch-transport (5.0.5)
+    elasticsearch-transport (6.1.0)
       faraday
       multi_json
     encryptor (3.0.0)
@@ -226,6 +226,8 @@ GEM
     ice_nine (0.11.2)
     inflecto (0.0.2)
     jaro_winkler (1.5.1)
+    jb (0.5.0)
+      multi_json
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -509,7 +511,7 @@ GEM
       railties (~> 5.0, >= 5.0.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.14)
+    uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -568,6 +570,7 @@ DEPENDENCIES
   guard
   guard-rspec
   guard-rubocop
+  jb
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

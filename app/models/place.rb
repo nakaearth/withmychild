@@ -30,4 +30,10 @@ class Place < ApplicationRecord
 
     photos.first.image.url(photo_size.to_sym)
   end
+
+  def description_summary
+    return description if description.length < 80
+
+    description[0..80] + '...'
+  end
 end
