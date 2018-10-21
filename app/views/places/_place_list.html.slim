@@ -6,9 +6,10 @@
       th
     - @places.each do |place|
       tr
-      .place_div
+      .place_summary
         span
           = image_tag place.first_image_url(:thumb)
+          .place_summary_name #{place.name}
           br/
           | #{place.description_summary}
           br/

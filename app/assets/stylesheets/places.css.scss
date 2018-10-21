@@ -33,17 +33,23 @@
 
   @include border-radius(5px);
 
-  .place_div {
+  .place_summary {
     background-color: #fff;
     border: 1px solid #000;
+    font-weight: bold;
     font-size: 10pt;
     width: 800px;
-    height: 250px;
+    height: 280px;
     margin: 5px;
     padding: 9px;
     box-shadow: 4px 4px;
 
     @include border-radius(10px);
+
+    .place_summary_name {
+      font-weight: bold;
+      font-size: 15pt;
+    }
   }
 }
 
