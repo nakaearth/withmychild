@@ -1,0 +1,137 @@
+doctype html
+html
+  head
+    title
+      | withMyChild
+    meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"]
+    = csrf_meta_tags
+    = stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+    javascript:
+      $(function() {
+        $('.ui.menu a.item').on('click', (e) => {
+          // スクロールの速度
+          const speed = 400; // ミリ秒
+          // アンカーの値取得
+          const href = $(e.target).data('tab');
+          // 移動先を取得
+          const target = $(href);
+          // 移動先を数値で取得
+          const position = target.offset().top;
+          // スムーススクロール
+          $('body,html').animate({scrollTop: position}, speed, 'swing');
+          return false;
+        });
+      });
+  body
+    .ui.menu
+      .ui.container
+        .header.item withMyChild
+        .right.menu
+          // .item = current_user.name
+          // = link_to 'ログアウト', logout_path, class: 'item'
+
+    .ui.main.text.container
+      .ui.one.column.stackable.grid
+        .center.aligned.column
+          img.ui.fluid.rounded.image [src="/assets/wireframe.png" alt="image1"]
+        .left.aligned.column
+          h1.ui.header = @place.name
+        .center.aligned.column
+          .ui.secondary.pointing.menu
+            a.item data-tab="#base-description" 店舗概要
+            a.item data-tab="#base-review" レビュー
+            a.item data-tab="#base-detail" 店舗基本情報
+            a.item data-tab="#base-facility" 設備情報
+        .left.aligned.column#base-description
+          = simple_format(@place.description)
+        .left.aligned.column#base-review
+          .ui.divider
+          h2.ui.center.aligned.header レビュー
+          .ui.list
+            .item
+              p 脱出ゲーム行ってきました！絶対脱出してやるって思いで参加してきたけど難しい…！でも謎が解けた時のワクワク感がクセになりますね笑。残念ながら脱出まではいけず惜しいところで終了。
+              img.ui.avatar.image [src="/assets/wireframe.png"]
+              .content
+                a.header とるぃ
+                .description
+                  | 投稿日 2016/12/8&nbsp;&nbsp;&nbsp;
+                  i.thumbs.outline.up.icon
+                  | 38
+            br
+            br
+            .item
+              p 友達合わせて3人で行きました！予想以上に難しくて、分からなくて笑っちゃいました（笑）でも、ヒント！と言ったら お店の方がヒントをくれるので最終的には（30分延長し...
+              img.ui.avatar.image [src="/assets/wireframe.png"]
+              .content
+                a.header ボノ
+                .description
+                  | 投稿日 2016/10/30&nbsp;&nbsp;&nbsp;
+                  i.thumbs.outline.up.icon
+                  | 23
+            br
+            br
+            .item
+              p ほんものの牢屋みたいな世界観でドキドキする！ハイテクな装置もあってびっくり！
+              img.ui.avatar.image [src="/assets/wireframe.png"]
+              .content
+                a.header はらちゅ
+                .description
+                  | 投稿日 2016/6/20&nbsp;&nbsp;&nbsp;
+                  i.thumbs.outline.up.icon
+                  | 8
+        .center.aliases.column#base-detail
+          .ui.divider
+          h2.ui.center.aligned.header 店舗基本情報
+          table.ui.celled.left.aligned.definition.table
+            tbody
+              tr
+                td 店舗名
+                td = @place.name
+              tr
+                td 住所
+                td = @place.address
+              tr
+                td 営業時間
+                td 10:00 - 12:00
+              tr
+                td 定休日
+                td 火曜日
+              tr
+                td アクセス
+                td たまプラーザ駅 徒歩10分
+        .center.aliases.column#base-facility
+          .ui.divider
+          h2.ui.center.aligned.header 設備情報
+          table.ui.celled.table
+            tbody
+              tr
+                th シャワー
+                td
+                  span 無
+                th トイレ
+                td
+                  span 無
+                th ドライヤー
+                td
+                  span 無
+              tr
+                th ロッカー
+                td
+                  span 無
+                th 売店
+                td
+                  span 無
+                th 更衣室
+                td
+                  span 無
+
+    .ui.inverted.footer.segment
+      .ui.center.aligned.container
+        .ui.horizontal.inverted.small.divided.link.list
+          a.item href="#" Site Map
+          a.item href="#" Contact Us
+          a.item href="#" Terms and Conditions
+          a.item href="#" Privacy Policy
+
