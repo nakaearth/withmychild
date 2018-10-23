@@ -126,15 +126,13 @@ gem 'geocoder'
 gem "active_decorator"
 # pagenate
 gem 'kaminari'
-# nokogirri
-gem 'nokogiri'
 # 暗号化
 gem 'attr_encrypted'
 # プロセス管理
 gem 'foreman'
 # elasticsearch
-gem 'elasticsearch-rails'
-gem 'elasticsearch-model'
+gem 'elasticsearch-rails', '~> 5'
+gem 'elasticsearch-model', '~> 5'
 gem 'faraday_middleware-aws-signers-v4'
 # 定数設定
 gem 'config'

@@ -55,7 +55,8 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   # 一部のテストを環境によっては実行させないようにするため追加
-  config.filter_run_excluding broken: true unless ENV['LOCAL']
+  # bundle exec rspec spec --tag braken でbroken=trueの設定をしているテストを実行できる
+  config.filter_run_excluding broken: true
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
