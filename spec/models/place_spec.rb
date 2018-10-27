@@ -4,7 +4,6 @@ require 'rails_helper'
 
 RSpec.describe Place, type: :model do
   let!(:user) { create(:user) }
-  let!(:park) { create(:place, :park, user: user) }
 
   describe '幾つかのテーブルと関連を持っている' do
     context 'have a relation tro user class' do
@@ -65,5 +64,25 @@ RSpec.describe Place, type: :model do
     #     # expect(Tag.where(name: 'test').first).not_to be_nil
     #   end
     # end
+  end
+
+  # インスタンスメソッドのdescription_summaryをテストする
+  describe '#desciption_summary' do
+    let(:park) { create(:place, :park, user: user, description: description) }
+
+    context '80文字以上の場合' do
+      let(:description) { 'a' * 81 }
+
+      it { expect(park.description_summary).to eq 'a' * 80 + '...' }
+    end
+
+    context '79文字の場合' do
+      let(:description) { 'a' * 79 }
+
+      it { expect(park.description_summary).to eq 'a' * 79 }
+    end
+  end
+
+  describe '#photo_image_urls' do
   end
 end

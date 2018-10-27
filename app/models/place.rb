@@ -40,8 +40,8 @@ class Place < ApplicationRecord
   end
 
   def description_summary
-    return description if description.length < 80
+    return description if description.length <= 80
 
-    description[0..80] + '...'
+    description[0..79] + '...'
   end
 end
