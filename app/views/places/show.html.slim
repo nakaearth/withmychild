@@ -1,8 +1,9 @@
 .place_form
   .place_form_detail
     span
-      - @place.photo_image_urls do |photo_url|
-        = image_tag photo_url
+      - @place.photo_image_urls(:thumb).each do |photo_url|
+        .place_form_detail_photo
+          = image_tag photo_url
       .place_summary_name #{@place.name}
       br/
       | #{@place.description}

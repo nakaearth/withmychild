@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get "/auth/failure" => "sessions#failuer"
 
   # web
-  resources :places, format: 'html', only: [:index, :create, :show] do
+  # TODO: 検索はcreateメソッドでなく別のを考えた方が良いかも？
+  resources :places, format: 'html', only: [:index, :create, :show, :edit, :update] do
     resources :photos
   end
   resources :users
