@@ -1,9 +1,10 @@
 .place_form
-  span
-    - @place.photo_image_urls do |photo_url|
-      = image_tag photo_url
-    .place_summary_name #{@place.name}
-    br/
-    | #{@place.description}
-  .place_form
-    | 投稿日付 #{@place.created_at.strftime("%Y/%m/%d")}
+  .place_form_detail
+    span
+      - @place.photo_image_urls do |photo_url|
+        = image_tag photo_url
+      .place_summary_name #{@place.name}
+      br/
+      | #{@place.description}
+    .place_form
+      | 投稿日付 #{@place.created_at.strftime("%Y/%m/%d")}
