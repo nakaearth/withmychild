@@ -4,8 +4,8 @@ class PlacesController < ApplicationController
   include UserAgent
   include DecryptedId
 
+  # ログイン機能不要のためskip
   skip_before_action :login?
-  # before_action :set_request_variant
   before_action :set_place, only: %i[edit show destroy]
   before_action :set_search_form, only: %i[create]
 
@@ -50,11 +50,6 @@ class PlacesController < ApplicationController
   end
 
   private
-
-  def set_request_variant
-    request.variant = :tablet if tablet?
-    request.variant = :phone if mobile?
-  end
 
   def set_place
     @place = Place.find(Place.decrypt_id(params[:id]))

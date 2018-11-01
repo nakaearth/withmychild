@@ -4,7 +4,8 @@ class PhotosController < ApplicationController
   include UserAgent
   include DecryptedId
 
-  before_action :set_request_variant
+  # ログイン機能が不要skip
+  skip_before_action :login?
   before_action :set_place, only: %i[index new]
   before_action :set_photo, only: %i[edit show destroy]
 
@@ -47,18 +48,13 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
 
-    redirect_to place_photos_path(album_id: Album.encrypt_id(@album.id.to_s), notice: '写真を削除しました')
+    redirect_to place_photos_path(place_id: Place.encrypt_id(@album.id.to_s), notice: '写真を削除しました')
   end
 
   private
 
-  def set_request_variant
-    request.variant = :tablet if tablet?
-    request.variant = :phone if mobile?
-  end
-
   def set_place
-    @place = Places.find(Place.decrypt_id(params[:place_id]))
+    @place = Place.find(Place.decrypt_id(params[:place_id]))
   end
 
   def set_photo
