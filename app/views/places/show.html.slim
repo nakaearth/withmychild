@@ -4,8 +4,10 @@
       - @place.photo_image_urls(:thumb).each do |photo_url|
         .place_form_detail_photo
           = image_tag photo_url
+        = link_to '画像追加', new_place_photo_path(place_id: Place.encrypt_id(@place.id.to_s))
       .place_summary_name #{@place.name}
       br/
       | #{@place.description}
-    .place_form
+      br/
+      br/
       | 投稿日付 #{@place.created_at.strftime("%Y/%m/%d")}
