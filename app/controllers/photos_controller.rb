@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
   # ログイン機能が不要skip
   skip_before_action :login?
-  before_action :set_place, only: %i[index new]
+  before_action :set_place, only: %i[index new create]
   before_action :set_photo, only: %i[edit show destroy]
 
   def index
