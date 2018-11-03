@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
   # ログイン機能が不要skip
   skip_before_action :login?
-  before_action :set_place, only: %i[index new]
+  before_action :set_place, only: %i[index new create]
   before_action :set_photo, only: %i[edit show destroy]
 
   def index
@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
 
     begin
       @photo.save!
-      redirect_to place_photos_path(place_id: Place.encrypt_id(@photo.place.id.to_s)), notice: '写真の登録がしました'
+      redirect_to place_path(id: Place.encrypt_id(@photo.place.id.to_s)), notice: '写真の登録がしました'
     rescue ActiveRecord::RecordInvalid => e
       @places = @current_user.places
       # TODO: ここエラーログはログ出力させたいっすね
@@ -65,11 +65,8 @@ class PhotosController < ApplicationController
     colums_name = [
       :place_id,
       :image,
-      photo_geo_attributes: [
-        :address
-      ]
     ]
 
-    params.require(:photo).permit(colums_name)
+    params.permit(colums_name)
   end
 end
