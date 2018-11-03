@@ -26,18 +26,21 @@ class Place < ApplicationRecord
   def first_image_url(photo_size = nil)
     return ImageUploader.new.default_url if photos.empty?
 
-    return photos.first.image.url unless photo_size
-
-    photos.first.image.url(photo_size.to_sym)
+    photos.first.image.standard.url
   end
 
-  def photo_image_urls(photo_size = nil)
+  def photo_thumb_image_urls
     return [ImageUploader.new.default_url] if photos.empty?
 
-    return [photos.first.image.url] unless photo_size
-
-    photos.map { |photo| photo.image.url }
+    photos.map { |photo| photo.image.standard.url }
   end
+
+  def photo_standard_image_urls
+    return [ImageUploader.new.default_url] if photos.empty?
+
+    photos.map { |photo| photo.image.standard.url }
+  end
+
 
   def description_summary
     return description if description.length <= 80

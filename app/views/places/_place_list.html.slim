@@ -8,7 +8,7 @@
       tr
       .place_summary
         span
-          = image_tag place.first_image_url(:thumb)
+          = image_tag place.first_image_url
           .place_summary_name #{place.name}
           br/
           | #{place.description_summary}
