@@ -62,9 +62,9 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    colums_name = [
-      :place_id,
-      :image,
+    colums_name = %i[
+      place_id
+      image
     ]
 
     params.permit(colums_name)

@@ -23,7 +23,7 @@ class Place < ApplicationRecord
 
   after_validation :geocode, if: ->(obj) { obj.address.present? and obj.address_changed? }
 
-  def first_image_url(photo_size = nil)
+  def first_image_url(_photo_size = nil)
     return ImageUploader.new.default_url if photos.empty?
 
     photos.first.image.standard.url
@@ -40,7 +40,6 @@ class Place < ApplicationRecord
 
     photos.map { |photo| photo.image.standard.url }
   end
-
 
   def description_summary
     return description if description.length <= 80
