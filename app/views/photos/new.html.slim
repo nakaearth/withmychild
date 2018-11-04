@@ -1,5 +1,5 @@
 .photo_form
-  .photo_form_div
+  .photo_form_detail
     = form_with url: place_photos_path(place_id: Place.encrypt_id(@place.id.to_s)) , local: true, multipart: true do |f|
       .field
         - if @photo.image?

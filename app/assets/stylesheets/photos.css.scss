@@ -10,7 +10,7 @@
 
    @include border-radius(4px);
 
-   .photo_form_div {
+   .photo_form_detail {
      background-color: #fff;
      border: 1px solid #000;
      font-size: 10pt;
@@ -38,5 +38,4 @@
    border: 1px solid #FFFFFF;
    z-index: 1020;
    @include border-radius(10px,10px);
-   @include box-shadow(rgba(blue, 0.4) 0 0 25px, rgba(green, 0.2) 0 0 3px 1px inset);
 }
