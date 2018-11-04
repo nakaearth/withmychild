@@ -1,5 +1,5 @@
-.photo_form.photo_form
-  .photo_form_div.photo_form_div
+.photo_form
+  .photo_form_div
     = form_with url: place_photos_path(place_id: Place.encrypt_id(@place.id.to_s)) , local: true, multipart: true do |f|
       .field
         - if @photo.image?
@@ -9,9 +9,5 @@
       .field
         = f.label :description
         | :#{f.text_area :description, :size => "40x20"}
-      = f.fields_for :tags do |tag_form|
-        .field
-          = tag_form.label :address
-          = tag_form.text_field :name
       .actions
         = f.submit
