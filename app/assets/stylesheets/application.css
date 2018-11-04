@@ -13,6 +13,7 @@
  *= require common
  *= require places
  *= require places_searchs
+ *= require photos
  *= require top
  *= require bootstrap_and_overrides
  *= require bootstrap-modal
