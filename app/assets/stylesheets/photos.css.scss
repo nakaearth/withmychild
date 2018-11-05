@@ -14,9 +14,10 @@
      background-color: #fff;
      border: 1px solid #000;
      font-size: 10pt;
-     width: 800pt;
-     height: 600pt;
+     width: 700pt;
+     height: 400pt;
      margin: 5px;
+     padding: 10px;
      box-shadow: 4px 4px;
 
      @include border-radius(4px);
