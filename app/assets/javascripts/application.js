@@ -13,5 +13,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require myscript
-//= require photos
+//= require webpack/main
 //= require bootstrap.min
