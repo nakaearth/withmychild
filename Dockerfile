@@ -1,15 +1,12 @@
 FROM ruby:2.5.1
+
+ENV LANG C.UTF-8
+
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev graphviz
-WORKDIR /tmp
-COPY ./Gemfile Gemfile
-COPY ./Gemfile.lock Gemfile.lock
-COPY ./Rakefile Rakefile
-COPY ./Procfile.development Procfile.development
-COPY ./Procfile Procfile
-COPY ./webpack.config.js webpack.config.js
-COPY ./package.json package.json
-COPY ./package-lock.json package-lock.json
-COPY ./.babelrc .babelrc
+WORKDIR /withmychild
+
+COPY . .
+
 RUN bundle install
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install nodejs
