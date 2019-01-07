@@ -77,7 +77,7 @@ group :test do
   gem 'rake_shared_context'
   gem 'rspec-request_describer'
   gem 'factory_bot_rails'
-  gem 'database_cleaner'
+  gem 'database_rewinder'
   gem 'shoulda-matchers'
   # コードカバレッジ
   gem 'simplecov', require: false
@@ -132,8 +132,8 @@ gem 'attr_encrypted'
 # プロセス管理
 gem 'foreman'
 # elasticsearch
-gem 'elasticsearch-rails', '~> 5'
-gem 'elasticsearch-model', '~> 5'
+gem 'elasticsearch-rails', '~> 6'
+gem 'elasticsearch-model', '~> 6'
 gem 'faraday_middleware-aws-signers-v4'
 # 定数設定
 gem 'config'

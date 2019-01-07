@@ -85,11 +85,12 @@ module PlaceSearchable
     end
 
     def transfer_to_elasticsearch
-      ElasticsearchClient.client.index index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json
+      # ElasticsearchClient.client.index index: Settings.elasticsearch[:index_name], type: 'place', id: id, body: as_indexed_json, pipeline: 'place_pipeline'
+      ElasticsearchClient.client.index index: Settings.elasticsearch[:index_name], type: '_doc', id: id, body: as_indexed_json
     end
 
     def remove_from_elasticsearch
-      ElasticsearchClient.client.delete index: Settings.elasticsearch[:index_name], type: 'place', id: id
+      ElasticsearchClient.client.delete index: Settings.elasticsearch[:index_name], type: '_doc', id: id
     end
   end
 
@@ -124,11 +125,30 @@ module PlaceSearchable
       find_in_batches.with_index do |entries, _i|
         client.bulk(
           index: Settings.elasticsearch[:index_name],
-          type: 'place',
+          type: '_doc',
           body: entries.map { |entry| { index: { _id: entry.id, data: entry.as_indexed_json } } },
           refresh: true, # NOTE: 定期的にrefreshしないとEsが重くなる
         )
       end
+    end
+
+    def create_pipeline!
+      client = ElasticsearchClient.client
+      client.ingest.put_pipeline(
+        id: 'place_pipeline',
+        body: {
+          processors: [
+            { set: { field: 'description', value: 'だってばよ' } }
+          ]
+        }
+      )
+    end
+
+    def get_pipeline!
+      client = ElasticsearchClient.client
+      client.ingest.get_pipeline(
+        id: 'place_pipeline'
+      )
     end
   end
   # rubocop:enable all

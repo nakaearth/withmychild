@@ -2,8 +2,8 @@ development:
   host: 'elasticsearch'
   port: 9200
 test:
-  host: '127.0.0.1'
-  # host: 'elasticsearch'
+  # host: '127.0.0.1'
+  host: 'elasticsearch'
   port: 9200
 production:
   url: <%= ENV['BONSAI_URL'] %>
