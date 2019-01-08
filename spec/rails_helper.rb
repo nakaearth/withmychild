@@ -49,7 +49,6 @@ RSpec.configure do |config|
   # factory_botでFactoryBotを省略して書けるようにする設定
   config.include FactoryBot::Syntax::Methods
 
-
   config.include(Shoulda::Matchers::ActiveModel, type: :model)
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 
