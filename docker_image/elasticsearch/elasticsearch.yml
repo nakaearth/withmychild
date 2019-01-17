@@ -5,4 +5,5 @@ network.host: 0.0.0.0
 # discovery.zen.minimum_master_nodes: 1
 
 # ingest node
-# node.ingest: true
+node.ingest: true
+# index.default_pipeline: 'place_pipeline'

@@ -20,7 +20,6 @@ module PlaceSearchable
       number_of_shards:   5,
       number_of_replicas: 1,
       # default_pipeline: 'place_pipeline',
-      # default_pipeline: '_none',
 
       analysis: {
         filter: {

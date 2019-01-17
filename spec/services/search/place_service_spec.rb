@@ -2,7 +2,8 @@
 
 require 'rails_helper'
 
-describe Search::PlaceService, broken: true do
+# describe Search::PlaceService, broken: true do
+describe Search::PlaceService do
   let(:user) { create(:user) }
   let!(:cafe) { create(:place, :cafe, user: user) }
   let!(:park) { create(:place, :park, user: user) }
@@ -10,8 +11,9 @@ describe Search::PlaceService, broken: true do
   let(:params) {}
 
   before do
+    Place.create_pipeline!
     Place.create_index!(force: true)
-    # Place.create_alias!
+    Place.create_alias!
     Place.bulk_import
     @service = Search::PlaceService.new(params)
     @service.call
