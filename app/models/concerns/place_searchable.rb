@@ -19,7 +19,7 @@ module PlaceSearchable
     settings index: {
       number_of_shards:   5,
       number_of_replicas: 1,
-      # default_pipeline: 'place_pipeline',
+      default_pipeline: 'place_pipeline',
 
       analysis: {
         filter: {
@@ -73,6 +73,7 @@ module PlaceSearchable
         indexes :tags,        type: 'nested' do
           indexes :name,      type: 'keyword'
         end
+        indexes :search_test, type: 'text', analyzer: 'kuromoji_analyzer'
         indexes :created_at,  type: 'date', format: 'date_time'
         indexes :updated_at,  type: 'date', format: 'date_time'
       end
@@ -140,7 +141,7 @@ module PlaceSearchable
         id: 'place_pipeline',
         body: {
           processors: [
-            { set: { field: 'description', value: 'だってばよ' } }
+            { set: { field: "search_test", value: "{{description}} {{tel}}" } }
           ]
         }
       )

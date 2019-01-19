@@ -6,4 +6,4 @@ network.host: 0.0.0.0
 
 # ingest node
 node.ingest: true
-# index.default_pipeline: 'place_pipeline'
+index.default_pipeline: 'place_pipeline'
