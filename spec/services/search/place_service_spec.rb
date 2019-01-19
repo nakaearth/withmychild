@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-# describe Search::PlaceService, broken: true do
-describe Search::PlaceService do
+describe Search::PlaceService, broken: true do
+# describe Search::PlaceService do
   let(:user) { create(:user) }
   let!(:cafe) { create(:place, :cafe, user: user) }
   let!(:park) { create(:place, :park, user: user) }
