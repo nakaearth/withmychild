@@ -25,6 +25,8 @@ jobs:
       # Restore bundle cache
       - restore_cache:
           key: withMyChild-{{ checksum "Gemfile.lock" }}
+      # bundler 2.0を使用
+      - run: gem install bundler
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
       # Store bundle cache
