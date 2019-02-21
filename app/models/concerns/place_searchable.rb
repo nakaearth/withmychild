@@ -55,6 +55,21 @@ module PlaceSearchable
           },
           ngram_analyzer: {
             tokenizer: 'ngram_tokenizer'
+          },
+          nfkc_cf_normalized: {
+            tokenizer: 'icu_tokenizer',
+            char_filter: [ 'icu_normalizer' ]
+          },
+          nfd_normalized: {
+            tokenizer: 'icu_tokenizer',
+            char_filter: [ 'nfd_normalizer' ]
+          }
+        },
+        char_filter: {
+          nfd_normalizer: {
+            type: 'icu_normalizer',
+            name: 'nfc',
+            mode: 'decompose'
           }
         }
       }

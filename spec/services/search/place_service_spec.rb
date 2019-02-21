@@ -2,9 +2,10 @@
 
 require 'rails_helper'
 
-describe Search::PlaceService, broken: true do
-# describe Search::PlaceService do
+# describe Search::PlaceService, broken: true do
+ describe Search::PlaceService do
   let(:user) { create(:user) }
+  # TODO: ここはbeforeに移す
   let!(:cafe) { create(:place, :cafe, user: user) }
   let!(:park) { create(:place, :park, user: user) }
   let!(:restaurant) { create(:place, :restaurant, user: user) }
@@ -43,6 +44,23 @@ describe Search::PlaceService, broken: true do
 
       it 'Typeが一致する物のみ検索にヒットする' do
         expect(@service.result_record[0].description).to eq cafe.description
+      end
+    end
+
+    context 'カタカナ、ひらがなでのキーワード検索' do
+      let(:params) { { keyword: 'テスト', type: 'Cafe' } }
+
+      before do
+        cafe2 = create(:place, :cafe, user: user, description: 'これはﾃｽﾄとです。これは')
+      end
+
+      it '指定した条件に合致するものが返ってくる(件数チェック)' do
+        expect(@service.hits_count.size).to eq 2
+      end
+
+      it '指定した条件に合致するものが返ってくる' do
+        expect(@service.result_record[0].description).to eq cafe.description
+        expect(@service.result_record[1].description).to eq cafe2.description
       end
     end
 
