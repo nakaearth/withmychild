@@ -17,7 +17,7 @@ module PlaceSearchable
 
     # Set up index configuration and mapping
     settings index: {
-      number_of_shards:   5,
+      number_of_shards:   2,
       number_of_replicas: 1,
       default_pipeline: 'place_pipeline',
 
