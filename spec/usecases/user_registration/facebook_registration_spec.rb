@@ -26,7 +26,7 @@ RSpec.describe UserRegistration::FacebookRegistration do
 
     context '正常なparamsの値が渡ってきた場合' do
       before do
-        @user = UserRegistration::FacebookRegistration.call(params)
+        @user = UserRegistration::FacebookRegistration.new(params).call
       end
 
       it 'usersテーブルにデータを登録し、その結果を返す' do

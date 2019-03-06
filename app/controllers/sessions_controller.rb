@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env['omniauth.auth']
-    user = User.find_by(provider: auth[:provider], email: auth[:info][:name]) || User.create_account(auth)
+    user = User.find_by(provider: auth[:provider], email: auth[:info][:name]) || UserRegistrationService.new(auth).call
 
     session[:encrypted_user_id] = Base64.encode64(user.id.to_s)
     logger.info user.try(:name)

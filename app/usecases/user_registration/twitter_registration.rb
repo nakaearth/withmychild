@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module UserRegistration
-  class FacebookRegistration
+  class TwitterRegistration
     def initialize(params)
       @params = params
     end
@@ -13,11 +13,12 @@ module UserRegistration
           user.email = @params[:info][:email]
           user.provider = @params[:provider]
           user.uid      = @params[:uid]
-          user.nickname = @params[:extra][:raw_info][:username]
+          user.nickname = @params[:info][:nickname]
           user.image_url = @params[:info][:image] || 'no_photo.jpeg'
 
           if @params[:credentials].present?
             user.access_token = @params[:credentials][:token]
+            user.secret_token = @params[:credentials][:secret]
           end
         end
 
