@@ -31,24 +31,24 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '.create_account' do
-    before do
-      allow(Users::FacebookRegistration).to receive(:call).with(params).and_return(create(:user, :facebook))
-      allow(Users::TwitterRegistration).to receive(:call).with(params).and_return(create(:user, :twitter))
-
-      @user = User.create_account(params)
-    end
-
-    context 'facebookからの登録の場合' do
-      let(:params) { { provider: 'facebook' } }
-
-      it { expect(@user.provider).to eq 'facebook' }
-    end
-
-    context 'twiterからの登録の場合' do
-      let(:params) { { provider: 'twitter' } }
-
-      it { expect(@user.provider).to eq 'twitter' }
-    end
-  end
+  # describe '.create_account' do
+  #   before do
+  #     allow(Users::FacebookRegistration).to receive(:call).with(params).and_return(create(:user, :facebook))
+  #     allow(Users::TwitterRegistration).to receive(:call).with(params).and_return(create(:user, :twitter))
+  #
+  #     @user = User.create_account(params)
+  #   end
+  #
+  #   context 'facebookからの登録の場合' do
+  #     let(:params) { { provider: 'facebook' } }
+  #
+  #     it { expect(@user.provider).to eq 'facebook' }
+  #   end
+  #
+  #   context 'twiterからの登録の場合' do
+  #     let(:params) { { provider: 'twitter' } }
+  #
+  #     it { expect(@user.provider).to eq 'twitter' }
+  #   end
+  # end
 end

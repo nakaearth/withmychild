@@ -14,13 +14,5 @@ class User < ApplicationRecord
   validates :provider, presence: true, length: { maximum: 30 }
 
   class << self
-    def create_account(auth)
-      case auth[:provider]
-      when 'facebook'
-        Users::FacebookRegistration.call(auth)
-      when 'twitter'
-        Users::TwitterRegistration.call(auth)
-      end
-    end
   end
 end
