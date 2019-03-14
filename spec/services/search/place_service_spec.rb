@@ -58,6 +58,22 @@ describe Search::PlaceService, broken: true do
           expect(@service.result_record[0].description).to eq park.description
         end
       end
+
+      context '語尾が長音の単語の検索' do
+        let(:params) { { keyword: 'コレクタ' } }
+
+        it '指定した条件に合致するものが返ってくる' do
+          expect(@service.result_record[0].description).to eq park.description
+        end
+      end
+
+      context '漢数字での検索' do
+        let(:params) { { keyword: '1000' } }
+
+        it '指定した条件に合致するものが返ってくる' do
+          expect(@service.result_record[0].description).to eq restaurant.description
+        end
+      end
     end
 
     context 'typeを絞り込んで検索' do

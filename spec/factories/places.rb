@@ -8,7 +8,7 @@ FactoryBot.define do
 
     trait :park do
       type 'Park'
-      description 'これはテスト。これは公園です。高速道路の近くにあります。'
+      description 'これはテスト。これは公園です。高速道路の近くにあります。ムシのコレクターも結構集まります。'
     end
 
     trait :cafe do
@@ -18,7 +18,7 @@ FactoryBot.define do
 
     trait :restaurant do
       type 'Restaurant'
-      description 'これはテスト。これはレストランです。セレブ御用達の店です。'
+      description 'これはテスト。これはレストランです。セレブ御用達の店です。一〇〇〇円でランチが食べられます'
     end
   end
 end
