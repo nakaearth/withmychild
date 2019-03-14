@@ -16,6 +16,12 @@ module PlaceSearchable
     document_type = 'place'
 
     # Set up index configuration and mapping
+    # kuromoji_part_of_speech: 不要な品詞の除去
+    # kuromoji_baseform token filter: 活用により変わる物を統一化
+    # kuromoji_readingform: 読み方が違っても同じ意味の物をヒットできるようにする
+    # kuromoji_stemmer: 最後の長音を削除(プリンター => プリンタ)
+    # kuromoji_number: 漢数字を数字に修正
+    #
     settings index: {
       number_of_shards:   2,
       number_of_replicas: 1,
@@ -51,7 +57,7 @@ module PlaceSearchable
           kuromoji_analyzer: {
             type:      'custom',
             tokenizer: 'kuromoji_tokenizer',
-            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width)
+            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width kuromoji_number kuromoji_stemmer)
           },
           ngram_analyzer: {
             tokenizer: 'ngram_tokenizer'

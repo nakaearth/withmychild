@@ -34,6 +34,32 @@ describe Search::PlaceService, broken: true do
       end
     end
 
+    context 'いくつかの単語で検索してみる' do
+      context '一文字を指定しての検索' do
+        let(:params) { { keyword: '高' } }
+
+        it '指定した条件に合致するものが返ってくる(件数チェック)' do
+          expect(@service.hits_count.size).to eq 1
+        end
+
+        it '指定した条件に合致するものが返ってくる' do
+          expect(@service.result_record[0].description).to eq park.description
+        end
+      end
+
+      context '二文字を指定しての検索' do
+        let(:params) { { keyword: '高速' } }
+
+        it '指定した条件に合致するものが返ってくる(件数チェック)' do
+          expect(@service.hits_count.size).to eq 1
+        end
+
+        it '指定した条件に合致するものが返ってくる' do
+          expect(@service.result_record[0].description).to eq park.description
+        end
+      end
+    end
+
     context 'typeを絞り込んで検索' do
       let(:params) { { keyword: 'テスト', type: 'Cafe' } }
 
