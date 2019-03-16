@@ -36,10 +36,6 @@ module PlaceSearchable
           greek_lowercase_filter: {
             type:     'lowercase',
             language: 'greek'
-          },
-          kuromoji_ks: {
-            type: 'kuromoji_stemmer',
-            minimum_length: '5'
           }
         },
         tokenizer: {
@@ -57,7 +53,11 @@ module PlaceSearchable
           kuromoji_analyzer: {
             type:      'custom',
             tokenizer: 'kuromoji_tokenizer',
-            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width kuromoji_number kuromoji_stemmer)
+            char_filter: [
+              'icu_normalizer',
+              'kuromoji_iteration_mark'
+            ],
+            filter:    %w(kuromoji_baseform pos_filter greek_lowercase_filter cjk_width ja_stop kuromoji_number kuromoji_stemmer)
           },
           ngram_analyzer: {
             tokenizer: 'ngram_tokenizer'

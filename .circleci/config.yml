@@ -12,7 +12,7 @@ jobs:
            - MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
            - MYSQL_ROOT_HOST: '%'
            - MYSQL_ROOT_PASSWORD: ''
-      - image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.3
+      - image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.5.4
         container_name: elasticsearch
         hostname: elasticsearch
         environment:

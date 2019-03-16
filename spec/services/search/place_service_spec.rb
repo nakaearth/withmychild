@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe Search::PlaceService, broken: true do
-# describe Search::PlaceService do
+# describe Search::PlaceService, broken: true do
+describe Search::PlaceService do
   let(:user) { create(:user) }
   let!(:cafe) { create(:place, :cafe, user: user) }
   let!(:park) { create(:place, :park, user: user) }
@@ -34,45 +34,43 @@ describe Search::PlaceService, broken: true do
       end
     end
 
-    context 'いくつかの単語で検索してみる' do
-      context '一文字を指定しての検索' do
-        let(:params) { { keyword: '高' } }
+    context '一文字を指定しての検索' do
+      let(:params) { { keyword: '高' } }
 
-        it '指定した条件に合致するものが返ってくる(件数チェック)' do
-          expect(@service.hits_count.size).to eq 1
-        end
-
-        it '指定した条件に合致するものが返ってくる' do
-          expect(@service.result_record[0].description).to eq park.description
-        end
+      it '指定した条件に合致するものが返ってくる(件数チェック)' do
+        expect(@service.hits_count.size).to eq 1
       end
 
-      context '二文字を指定しての検索' do
-        let(:params) { { keyword: '高速' } }
+      it '指定した条件に合致するものが返ってくる' do
+        expect(@service.result_record[0].description).to eq park.description
+      end
+    end
 
-        it '指定した条件に合致するものが返ってくる(件数チェック)' do
-          expect(@service.hits_count.size).to eq 1
-        end
+    context '二文字を指定しての検索' do
+      let(:params) { { keyword: '高速' } }
 
-        it '指定した条件に合致するものが返ってくる' do
-          expect(@service.result_record[0].description).to eq park.description
-        end
+      it '指定した条件に合致するものが返ってくる(件数チェック)' do
+        expect(@service.hits_count.size).to eq 1
       end
 
-      context '語尾が長音の単語の検索' do
-        let(:params) { { keyword: 'コレクタ' } }
-
-        it '指定した条件に合致するものが返ってくる' do
-          expect(@service.result_record[0].description).to eq park.description
-        end
+      it '指定した条件に合致するものが返ってくる' do
+        expect(@service.result_record[0].description).to eq park.description
       end
+    end
 
-      context '漢数字での検索' do
-        let(:params) { { keyword: '1000' } }
+    context '語尾が長音の単語の検索' do
+      let(:params) { { keyword: 'コレクタ' } }
 
-        it '指定した条件に合致するものが返ってくる' do
-          expect(@service.result_record[0].description).to eq restaurant.description
-        end
+      it '指定した条件に合致するものが返ってくる' do
+        expect(@service.result_record[0].description).to eq park.description
+      end
+    end
+
+    context '漢数字での検索' do
+      let(:params) { { keyword: '1000' } }
+
+      it '指定した条件に合致するものが返ってくる' do
+        expect(@service.result_record[0].description).to eq restaurant.description
       end
     end
 
