@@ -20,6 +20,7 @@ jobs:
           - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
         ports:
           - 9200:9200
+        command: bin/elasticsearch-plugin install analysis-kuromoji
     steps:
       - checkout
       # Restore bundle cache
