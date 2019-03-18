@@ -40,8 +40,8 @@ jobs:
       # elasticsearh.yml copy
       - run: cp config/elasticsearch.yml.ci config/elasticsearch.yml
       # elasticsearch setup
-      - run: elasticsearch-plugin install analysis-kuromoji
-      - run: elasticsearch-plugin install analysis-icu
+      - run: bin/elasticsearch-plugin install analysis-kuromoji
+      - run: bin/elasticsearch-plugin install analysis-icu
       # Run rspec in parallel
       - run: |
           bundle exec rspec --profile 10 \
