@@ -16,10 +16,13 @@ jobs:
         container_name: elasticsearch
         hostname: elasticsearch
         environment:
-          - "http.host=0.0.0.0"
+          http.host: '0.0.0.0'
           - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
         ports:
           - 9200:9200
+        command: |
+          elasticsearch-plugin install analysis-kuromoji
+          elasticsearch-plugin install analysis-icu
     steps:
       - checkout
       # Restore bundle cache
