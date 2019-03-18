@@ -21,6 +21,7 @@ jobs:
         ports:
           - 9200:9200
         command: bin/elasticsearch-plugin install analysis-kuromoji
+        command: bin/elasticsearch-plugin install analysis-icu
     steps:
       - checkout
       # Restore bundle cache
