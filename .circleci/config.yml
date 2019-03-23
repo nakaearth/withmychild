@@ -37,6 +37,8 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake ridgepole:apply
+      # elasticsearch config
+      - run: cp config/elasticsearch.yml.ci config/elasticsearch.yml
       # Run rspec in parallel
       - run: |
           bundle exec rspec --profile 10 \
@@ -44,6 +46,7 @@ jobs:
                             $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
       - run: bundle exec rubocop app
       - run: bundle exec rubocop spec
+      - run: cp config/elasticsearch.yml.org config/elasticsearch.yml
       - store_test_results:
           path: test_results
       - run: bash .circleci/setup-heroku.sh
