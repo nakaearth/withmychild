@@ -14,7 +14,7 @@ RSpec.describe UserRegistration::FacebookRegistration do
           image: 'http://graph.facebook.com/1234567/picture?type=square'
         },
         credentials: {
-          token: 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
+          token: 'ABCDEF...' # OAuth 2.0 access_token, which you may wish to store
         },
         extra: {
           raw_info: {

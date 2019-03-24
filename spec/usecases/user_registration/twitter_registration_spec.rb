@@ -16,7 +16,7 @@ RSpec.describe UserRegistration::TwitterRegistration do
         },
         credentials: {
           token: 'ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
-          secret: '123ABCDEF...', # OAuth 2.0 access_token, which you may wish to store
+          secret: '123ABCDEF...' # OAuth 2.0 access_token, which you may wish to store
         }
       }
     end
