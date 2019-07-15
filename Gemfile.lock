@@ -402,7 +402,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    ridgepole (0.7.4)
+    ridgepole (0.7.8)
       activerecord (>= 5.0.1, < 6)
       diffy
     rmagick (3.0.0)
@@ -602,7 +602,7 @@ DEPENDENCIES
   rake_shared_context
   rb-readline
   request_store
-  ridgepole (= 0.7.4)
+  ridgepole (= 0.7.8)
   rmagick
   rspec-mocks
   rspec-rails
