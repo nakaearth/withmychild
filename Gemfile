@@ -36,7 +36,7 @@ gem 'jb'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # スキーマ管理
-gem 'ridgepole', '0.7.4'
+gem 'ridgepole', '0.8.3'
 # 初期データの投入
 gem 'seed-fu', '~> 2.3'
 
