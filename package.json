@@ -28,7 +28,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
-    "ajv": "^6.5.2",
+    "ajv": "^7.0.3",
     "npm": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
